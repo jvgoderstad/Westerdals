@@ -41,11 +41,11 @@ echo '
 			</label>
 			<label>
 				<span>Studentnr</span>
-				<input type="text" class="input_text" name="studentnummer" pattern="[0-9]{6}" required/>
+				<input type="text" class="input_text" name="studentnummer" pattern="[0-9]{2}" required/>
 			</label>
 			<label>
 				<span>Brukernavn</span>
-				<input type="text" class="input_text" name="brukernavn" pattern="[A-Za-z0-9ØÆÅøæå-_]{1,15}" required/>
+				<input type="text" class="input_text" name="brukernavn" pattern="[A-Za-z0-9ØÆÅøæå_-]{3,15}" required/>
 			</label>
 			<label>
 				<span>E-post</span>
