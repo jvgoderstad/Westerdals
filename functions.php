@@ -3,6 +3,7 @@
 header('content-type:text/html;charset=utf-8;');
 require 'database.php';
 echo '<link rel="stylesheet" type="text/css" href="styles.css">';
+session_start();
 
 //---------------NOTES----------------
 //REQUIRES THE "nithutvalg" DATABASE!

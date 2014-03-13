@@ -1,7 +1,6 @@
 <?php
 //REQUIREMENTS FOR ALL PAGES
 require 'functions.php';
-session_start();
 echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 //REQUIREMENTS FOR ALL PAGES
 
