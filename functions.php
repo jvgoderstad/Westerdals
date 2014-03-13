@@ -214,7 +214,7 @@ function getUserSurnameName($db, $id){
 	}
 
 	$userinfo = $stmt->fetch(PDO::FETCH_ASSOC);
-	return $userinfo['surname'].', '.$userinfo['name'];
+	echo $userinfo['surname'].', '.$userinfo['name'];
 }
 
 //Gets the accesslevel of the provided userid
@@ -319,7 +319,9 @@ function drawLogoutBtn($db){
 	}
 
 	if (isset($_SESSION['id'])){
-		echo '<td width="10%"><a href ="session.php" id="valg"><div class="LogoutText">Logg ut</div></a></td>';
+		echo '<td width="45%"><a>';
+		getUserSurnameName($db, $_SESSION['id']);
+		echo'</a><a>|<a/><a href ="session.php" id="valg"><div class="LogoutText">Logg ut</div></a></td>';
 	} else {
 		echo	'<form method="POST" action="">
 					<td width="16%"><input type="text" name="brukernavn" placeholder="Brukernavn" maxlength="45" class="input_banner"></td>
