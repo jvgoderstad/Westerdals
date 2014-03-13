@@ -30,37 +30,41 @@ if (isset($_POST['fornavn']) && isset($_POST['etternavn']) && isset($_POST['stud
 echo '
 <div class ="formholder">
 		<form method="POST" action="registrer.php" onsubmit="return checkEmail(this);">
-			<fieldset>
-			<legend>Registrer ny bruker</legend>
-				<table  CELLPADDING="2">
-					<tr>
-						<td>Fornavn:</td><td><input type="text" name="fornavn" placeholder="Fornavn" maxlength="45"/></td>
-					</tr>
-					<tr>
-						<td>Etternavn:</td><td><input type="text" name="etternavn" placeholder="Etternavn" maxlength="60"/></td>
-					</tr>
-					<tr>
-						<td>Studentnr:</td><td><input type="text" name="studentnummer" placeholder="Studentnummer" maxlength="6"/></td>
-					</tr>
-					<tr>
-						<td>Brukernavn:</td><td><input type="text" name="brukernavn" placeholder="Brukernavn" maxlength="45"/></td>
-					</tr>
-					<tr>
-						<td>E-post:</td><td><input type="email" name="email_1" id="input_text" placeholder="E-postadresse" maxlength="60"/></td>
-					</tr>
-					<tr>
-						<td >Gjenta: </td><td><input type="email"  id="emailForm" name="email_2" placeholder="Gjenta E-postadresse" maxlength="60"/></td>
-					</tr>
-					<tr>
-						<td>Password:</td><td><input type="password" name="passord_1" placeholder="Passord" maxlength="30"/></td>
-					</tr>
-					<tr>
-						<td>Gjenta:</td><td><input type="password" id="passordForm" name="passord_2" placeholder="Gjenta passord" maxlength="30"/></td>
-					</tr>
-				</table>
-			</fieldset>
-			<input type="submit" value="Registrer">
-		</form>
+		<div class="box">
+			<h1>Registrer ny bruker</h1>
+			<label>
+				<span>Fornavn</span>
+				<input type="text" class="input_text" name="fornavn" id="name" maxlength="45"/>
+			</label>
+			<label>
+				<span>Etternavn</span>
+				<input type="text" class="input_text" name="etternavn" id="name" maxlength="60"/>
+			</label>
+			<label>
+				<span>Studentnr</span>
+				<input type="text" class="input_text" name="studentnummer" id="name" maxlength="6"/>
+			</label>
+			<label>
+				<span>Brukernavn</span>
+				<input type="text" class="input_text" name="brukernavn" id="name" maxlength="15"/>
+			</label>
+			<label>
+				<span>E-post</span>
+				<input type="email" class="input_text" name="email_1" id="email maxlength="60""/>
+				<span>Gjenta</span>
+				<input type="email" class="input_text" name="email_2" id="email maxlength="60""/>
+			</label>
+			<label>
+				<span>Passord</span>
+				<input type="password" class="input_text" name="passord_1" id="subject" maxlength="30"/>
+				<span>Gjenta</span>
+				<input type="password" class="input_text" name="passord_2" id="subject" maxlength="30"/>
+			</label>
+			<label align="center">
+				<input type="submit"  class="button" value="Registrer">
+			</label>
+		</div>
+	</form>
 	</div>
 ';
 ?>
