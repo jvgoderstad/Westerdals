@@ -313,17 +313,17 @@ function drawHeader($db){
 
 //Draws login/logout
 function drawLogoutBtn($db){
-	
+
 	if (isset($_POST['brukernavn']) && isset($_POST['passord'])){
 		login($db, $_POST['brukernavn'], $_POST['passord']);
 	}
-	
+
 	if (isset($_SESSION['id'])){
 		echo '<td width="10%"><a href ="session.php" id="valg"><div class="LogoutText">Logg ut</div></a></td>';
 	} else {
 		echo	'<form method="POST" action="">
-					<td width="16%"><input type="text" name="brukernavn" placeholder="Brukernavn" maxlength="45"></td>
-					<td width="16%"><input type="password" name="passord" placeholder="Passord" maxlength="30"></td>
+					<td width="16%"><input type="text" name="brukernavn" placeholder="Brukernavn" maxlength="45" class="input_banner"></td>
+					<td width="16%"><input type="password" name="passord" placeholder="Passord" maxlength="30" class="input_banner"></td>
 					<td width="10%"><input type="submit" value="Logg inn" class="btn"></td>
 					<td width="13%"><a>|<a/><a href ="registrer.php" id="valg">Ny bruker</a></td>
 				</form>';
