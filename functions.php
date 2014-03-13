@@ -276,7 +276,7 @@ function drawAllUtvalgThumbnail($db, $class){
 function drawHeader($db){
 	echo '
 		<div class ="Banner">
-			<img class ="logo "src="westerdal.png" alt="Westerdals Logo">
+			<a href="home.php"><img class ="logo "src="westerdal.png" alt="Westerdals Logo"></a>
 		</div>
 		<div class ="MenuBack"></div>
 		<div class ="MenuFront">
