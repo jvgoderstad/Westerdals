@@ -291,17 +291,17 @@ function drawAllUtvalgThumbnail($db, $class){
 //Draws the HTML header
 function drawHeader($db){
 	echo '
-		<div class ="Banner">
-			<a href="home.php"><img class ="logo "src="westerdal.png" alt="Westerdals Logo"></a>
+		<div class ="header-top">
+			<a href="home.php"><img class ="header-logo "src="westerdal.png" alt="Westerdals Logo"></a>
 		</div>
-		<div class ="MenuBack"></div>
-		<div class ="MenuFront">
-			<table align="center" height="40">
+		<div class ="header-bot"></div>
+		<div class ="header-menu">
+			<table align="center">
 				<tr>
 					<td>
-						<a href ="#aktiviteter" id="valg">Aktiviteter</a>
+						<a href ="#aktiviteter" class="valg">Aktiviteter</a>
 						<a>|<a/>
-						<a href ="home.php" id="valg">Utvalg</a>';
+						<a href ="home.php" class="valg">Utvalg</a>';
 						drawLogoutBtn($db);
 						echo'
 				</tr>
@@ -320,17 +320,19 @@ function drawLogoutBtn($db){
 
 	if (isset($_SESSION['id'])){
 		echo '<a>|<a/>
-				<a href ="#mineutvalg" id="valg">Mine Utvalg</a></td><td width="45%"><a>';
+		<a href ="#mineutvalg" class="valg">Mine Utvalg</a></td><td width="45%"><a>';
 		getUserSurnameName($db, $_SESSION['id']);
-		echo'</a><a>|<a/><a href ="session.php" id="valg"><div class="LogoutText">Logg ut</div></a></td>';
-	} else {
-		echo	'<form method="POST" action="">
-				</td>
-					<td width="16%"><input type="text" name="loginbrukernavn" placeholder="Brukernavn" maxlength="45" class="input_banner"></td>
-					<td width="16%"><input type="password" name="loginpassord" placeholder="Passord" maxlength="30" class="input_banner"></td>
-					<td width="10%"><input type="submit" value="Logg inn" class="btn"></td>
-					<td width="13%"><a>|<a/><a href ="registrer.php" id="valg">Ny bruker</a></td>
-				</form>';
+		echo'</a><a>|<a/><a href ="session.php" class="valg"><div id="logg_out">Logg ut</div></a></td>';
+	}
+	else {
+		echo '
+		<form method="POST" action="">
+		</td>
+			<td width="16%"><input type="text" name="loginbrukernavn" placeholder="Brukernavn" maxlength="45" class="header_input" required=""></td>
+			<td width="16%"><input type="password" name="loginpassord" placeholder="Passord" maxlength="30" class="header_input" required=""></td>
+			<td width="10%"><input type="submit" value="Logg inn" id="logg_in"></td>
+			<td width="13%"><a>|<a/><a href ="registrer.php" class="valg">Ny bruker</a></td>
+		</form>';
 	}
 }
 ?>

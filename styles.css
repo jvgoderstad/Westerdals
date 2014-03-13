@@ -2,9 +2,15 @@ body {
 	margin: 0;
 }
 
+*:focus {
+	outline-color: #00A1F3;
+}
+
 form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
-.logo {
+/* header styling */
+
+.header-logo {
 	position: absolute;
 	left:80px;
 	top: 10px;
@@ -17,34 +23,14 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 	transform: rotate(-45deg);
 }
 
-.Banner {
+.header-top {
 	position: relative;
 	background-color: black;
 	width: 100%;
 	height: 120px;
 }
 
-.formholder > form {
-	text-align:center;
-	padding-top:20px;
-	margin: auto;
-	width:320px;
-}
-
-.LoggIn {
-	color: red;
-}
-
-.formholder table {width:100%; text-align:left;}
-.formholder input[type=submit] { width: 72px;}
-.formholder input{ width: 100%; }
-.formholder td { width: auto; }
-
-legend {
-	font-size: 22px;
-}
-
-.MenuBack {
+.header-bot {
 	background-color: #242525;
 	width: 100%;
 	height: 34px;
@@ -54,56 +40,20 @@ legend {
 	border-bottom:4px solid #161712;
 }
 
-.MenuFront {
+.header-menu {
 	margin: auto;
 	margin-top: -40px;
 	width: 960px;
 	height: 40px;
 }
 
-.MenuFront > table {
+.header-menu > table {
+	height: 40px;
 	border-collapse: collapse;
 	width: 100%;
 }
 
-.MenuFront a, .btn  {
-	color:#D0D0D0;
-	display:inline-block;
-	font-family: arial;
-	font-size: 20px;
-	padding-left: 10px;
-	padding-top: 0px;
-	text-align: center;
-	text-decoration: none;
-}
-
-.LogoutText {
-	color:#D0D0D0;
-}
-.LogoutText:hover {
-    color:#0B9CE7;
-}
-
-#valg:hover {color:#0B9CE7;}
-
-.btn {
-	margin-top: 3px;
-	margin-right: 6px;
-    background-color: transparent;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-}
-
-.btn:hover {
-    color:#0B9CE7;
-}
-
-th, td, tr {
-    padding: 0;
-}
-
-.input_banner{
+.header_input{
 	width:150px;
 	margin: 0 5px 0 5px;
 	padding:6px;
@@ -114,15 +64,38 @@ th, td, tr {
 	border-right:1px double #333;
 }
 
-*:focus {
-	outline-color: #00A1F3;
+.header-menu a, #logg_in  {
+	color:#D0D0D0;
+	display:inline-block;
+	font-family: arial;
+	font-size: 20px;
+	padding-left: 10px;
+	padding-top: 0px;
+	text-align: center;
+	text-decoration: none;
 }
 
-.btn:focus {
+.valg:hover, #logg_in:hover {color:#0B9CE7;}
+
+#logg_in {
+	margin-top: 3px;
+	margin-right: 6px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+#logg_in:focus {
     outline: 0;
 }
 
-/* Registrer form styling */
+/* ------------------------------ */
+
+.formholder > form {
+	text-align:center;
+}
+
+/* register.php */
 *{ margin:0; padding:0;}
 body{ font:100% normal Arial, Helvetica, sans-serif; ;}
 form,input,select,textarea{margin:0; padding:0; color:#fff;}
@@ -191,4 +164,4 @@ border-left:1px double #FF0033;
 border-right:1px double #FF0033;
 }
 
-
+/*--------------------------------*/
