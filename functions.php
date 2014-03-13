@@ -202,6 +202,21 @@ function getUserName($db, $id){
 	return $userinfo['username'];
 }
 
+//Gets the surname, name and returns it as a string, based on the provided userdb and id
+function getUserSurnameName($db, $id){
+	$stmt = $db->prepare('SELECT * FROM users WHERE id=:id');
+	$stmt->bindParam(':id', $id, PDO::PARAM_STR);
+	try{
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+	}
+
+	$userinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $userinfo['surname'].', '.$userinfo['name'];
+}
+
 //Gets the accesslevel of the provided userid
 function getAccess($db, $userid){
 	$stmt = $db->prepare('SELECT access FROM users WHERE id=:id');
