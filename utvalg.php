@@ -5,7 +5,7 @@ session_start();
 echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 //REQUIREMENTS FOR ALL PAGES
 
-drawHeader();
+drawHeader($db);
 
 $name = $_GET['utvalg'];
 echo "<p>THIS IS $name!<p/>";

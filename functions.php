@@ -26,7 +26,7 @@ if (isset($_GET['logout'])){
 //---------------------------FUNCTIONS FOLLOWING!----------------------------------------------------------------//
 
 //Login a specified user from a userdb, and redirecting to redirect   (Userid stored in _SESSION['id'])
-function login($db, $username, $password, $redirect){
+function login($db, $username, $password){
 	$stmt = $db->prepare('SELECT * FROM users WHERE username=:username');
 	$stmt->bindParam(':username', $username, PDO::PARAM_STR);
 	try{
@@ -41,7 +41,7 @@ function login($db, $username, $password, $redirect){
 	if (trim((string)mcrypt_decrypt(MCRYPT_RIJNDAEL_128, 'encrKey12', $userinfo['password'], MCRYPT_MODE_CBC)) === (string)$password){
 		$_SESSION['id'] = $userinfo['id'];
 		$_SESSION['access'] = $userinfo['access'];
-		header("Location: $redirect");
+		header('Location: '.$_SERVER['PHP_SELF']);
 	} else {
 		echo "Incorrect username or password!";
 	}
@@ -273,7 +273,7 @@ function drawAllUtvalgThumbnail($db, $class){
 }
 
 //Draws the HTML header
-function drawHeader(){
+function drawHeader($db){
 	echo '
 		<div class ="Banner">
 			<img class ="logo "src="westerdal.png" alt="Westerdals Logo">
@@ -287,7 +287,7 @@ function drawHeader(){
 						<a>|<a/>
 						<a href ="home.php" id="valg">Utvalg</a>
 					</td>';
-						drawLogoutBtn();
+						drawLogoutBtn($db);
 						echo'
 				</tr>
 			</table>
@@ -297,11 +297,16 @@ function drawHeader(){
 }
 
 //Draws login/logout
-function drawLogoutBtn(){
+function drawLogoutBtn($db){
+	
+	if (isset($_POST['brukernavn']) && isset($_POST['passord'])){
+		login($db, $_POST['brukernavn'], $_POST['passord']);
+	}
+	
 	if (isset($_SESSION['id'])){
 		echo '<td width="10%"><a href ="session.php" id="valg"><div class="LogoutText">Logg ut</div></a></td>';
 	} else {
-		echo	'<form method="POST" action="index.php">
+		echo	'<form method="POST" action="">
 					<td width="16%"><input type="text" name="brukernavn" placeholder="Brukernavn" maxlength="45"></td>
 					<td width="16%"><input type="password" name="passord" placeholder="Passord" maxlength="30"></td>
 					<td width="10%"><input type="submit" value="Logg inn" class="btn"></td>

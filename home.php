@@ -5,7 +5,7 @@ session_start();
 //REQUIREMENTS FOR ALL PAGES
 echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 
-drawHeader();
+drawHeader($db);
 
 if (!empty($_SESSION['id'])){
 	echo "Welcome, ".getUserName($db, $_SESSION['id']);

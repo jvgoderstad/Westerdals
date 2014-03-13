@@ -14,7 +14,7 @@ echo '<script type="text/javascript" language="JavaScript">
 		    return true;
 		}
 	</script>';
-drawHeader();
+drawHeader($db);
 
 
 
