@@ -41,7 +41,7 @@ echo '
 			</label>
 			<label>
 				<span>Studentnr</span>
-				<input type="text" class="input_text" name="studentnummer" pattern="[0-9]{2}" required/>
+				<input type="text" class="input_text" name="studentnummer" pattern="[0-9]{6}" required/>
 			</label>
 			<label>
 				<span>Brukernavn</span>
