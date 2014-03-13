@@ -30,7 +30,7 @@ if (isset($_POST['fornavn']) && isset($_POST['etternavn']) && isset($_POST['stud
 echo '
 <div class ="formholder">
 		<form method="POST" action="registrer.php" onsubmit="return checkEmail(this);">
-		<div class="box">
+		<div class="boxReg">
 			<h1>Registrer ny bruker</h1>
 			<label>
 				<span>Fornavn</span>

@@ -127,7 +127,7 @@ th, td, tr {
 body{ font:100% normal Arial, Helvetica, sans-serif; ;}
 form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
-div.box{
+div.boxReg{
 margin:0 auto;
 width:360px;
 background:#222;
@@ -136,7 +136,7 @@ top:10px;
 border:1px solid #262626;
 }
 
-div.box h1{
+div.boxReg h1{
 color:#FFF5CC;
 font-size:18px;
 text-transform:uppercase;
@@ -146,7 +146,7 @@ border-bottom:1px solid #161712;
 border-top:1px solid #161712;
 }
 
-div.box label{
+div.boxReg label{
 width:100%;
 display: block;
 background:#1C1C1C;
@@ -155,7 +155,7 @@ border-bottom:1px solid #161712;
 padding:10px 0 10px 0;
 }
 
-div.box label span{
+div.boxReg label span{
 display: block;
 color:#bbb;
 font-size:12px;
@@ -165,7 +165,7 @@ text-align:right;
 padding:12px 20px 0 0;
 }
 
-div.box .input_text{
+div.boxReg .input_text{
 padding:6px;
 width:200px;
 background:#262626;
@@ -176,7 +176,7 @@ border-left:1px double #333;
 border-right:1px double #333;
 }
 
-div.box .button
+div.boxReg .button
 {
 margin:0 0 10px 0;
 padding:4px 7px;
