@@ -328,8 +328,8 @@ function drawLogoutBtn($db){
 		echo '
 		<form method="POST" action="">
 		</td>
-			<td width="16%"><input type="text" name="loginbrukernavn" placeholder="Brukernavn" maxlength="45" class="header_input" required=""></td>
-			<td width="16%"><input type="password" name="loginpassord" placeholder="Passord" maxlength="30" class="header_input" required=""></td>
+			<td width="16%"><input type="text" name="loginbrukernavn" placeholder="Brukernavn" maxlength="45" class="header_input" required></td>
+			<td width="16%"><input type="password" name="loginpassord" placeholder="Passord" maxlength="30" class="header_input" required></td>
 			<td width="10%"><input type="submit" value="Logg inn" id="logg_in"></td>
 			<td width="13%"><a>|<a/><a href ="registrer.php" class="valg">Ny bruker</a></td>
 		</form>';

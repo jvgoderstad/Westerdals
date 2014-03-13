@@ -2,8 +2,10 @@ body {
 	margin: 0;
 }
 
+
+
 *:focus {
-	outline-color: #00A1F3;
+	outline-color: #0B9CE7;
 }
 
 form,input,select,textarea{margin:0; padding:0; color:#fff;}
@@ -31,13 +33,28 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 }
 
 .header-bot {
+/*	width: 100%;
 	background-color: #242525;
-	width: 100%;
 	height: 34px;
 	display: block;
 	background:#1C1C1C;
 	border-top:2px solid #262626;
-	border-bottom:4px solid #161712;
+	border-bottom:4px solid #161712;*/
+
+	border-top: 1px solid #040404;
+	border-bottom: 1px solid #040404;
+    background-color: #111111;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    text-shadow: 0 1px 0 #111111;
+    display: block;
+	height: 38px;
 }
 
 .header-menu {
@@ -75,8 +92,6 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 	text-decoration: none;
 }
 
-.valg:hover, #logg_in:hover {color:#0B9CE7;}
-
 #logg_in {
 	margin-top: 3px;
 	margin-right: 6px;
@@ -85,22 +100,20 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
     border: none;
 }
 
+.valg:hover, #logg_in:hover {color:#0B9CE7;}
+
 #logg_in:focus {
     outline: 0;
 }
 
 /* ------------------------------ */
-
-.formholder > form {
-	text-align:center;
-}
-
 /* register.php */
+
 *{ margin:0; padding:0;}
 body{ font:100% normal Arial, Helvetica, sans-serif; ;}
 form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
-div.boxReg{
+div.boxReg {
 margin:0 auto;
 width:360px;
 background:#222;
@@ -109,7 +122,7 @@ top:5px;
 border:1px solid #262626;
 }
 
-div.boxReg h1{
+div.boxReg h1 {
 color:#FFF5CC;
 font-size:18px;
 text-transform:uppercase;
@@ -119,7 +132,7 @@ border-bottom:1px solid #161712;
 border-top:1px solid #161712;
 }
 
-div.boxReg label{
+div.boxReg label {
 width:100%;
 display: block;
 background:#1C1C1C;
@@ -128,7 +141,7 @@ border-bottom:1px solid #161712;
 padding:10px 0 10px 0;
 }
 
-div.boxReg label span{
+div.boxReg label span {
 display: block;
 color:#bbb;
 font-size:12px;
@@ -138,19 +151,18 @@ text-align:right;
 padding:12px 0 0 0;
 }
 
-div.boxReg .input_text{
+div.boxReg .input_text {
 padding:6px;
 width:200px;
 background:#262626;
-margin: 4px 0 4px 0;
+margin: 4px 0 4px 20px;
 border-bottom: 1px double #171717;
 border-top: 1px double #171717;
 border-left:1px double #333;
 border-right:1px double #333;
 }
 
-div.boxReg .button
-{
+div.boxReg .button {
 margin:0 0 10px 0;
 padding:4px 7px;
 background:#CC0000;
@@ -165,3 +177,4 @@ border-right:1px double #FF0033;
 }
 
 /*--------------------------------*/
+
