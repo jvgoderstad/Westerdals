@@ -122,7 +122,7 @@ th, td, tr {
     outline: 0;
 }
 
-/*new reg form*/
+/* Registrer form styling */
 *{ margin:0; padding:0;}
 body{ font:100% normal Arial, Helvetica, sans-serif; ;}
 form,input,select,textarea{margin:0; padding:0; color:#fff;}
@@ -132,7 +132,7 @@ margin:0 auto;
 width:360px;
 background:#222;
 position:relative;
-top:10px;
+top:5px;
 border:1px solid #262626;
 }
 
@@ -162,14 +162,14 @@ font-size:12px;
 float:left;
 width:80px;
 text-align:right;
-padding:12px 20px 0 0;
+padding:12px 0 0 0;
 }
 
 div.boxReg .input_text{
 padding:6px;
 width:200px;
 background:#262626;
-margin: 8px 0 8px 0;
+margin: 4px 0 4px 0;
 border-bottom: 1px double #171717;
 border-top: 1px double #171717;
 border-left:1px double #333;
