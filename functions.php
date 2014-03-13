@@ -300,7 +300,8 @@ function drawHeader($db){
 					<td>
 						<a href ="#aktiviteter" id="valg">Aktiviteter</a>
 						<a>|<a/>
-						<a href ="home.php" id="valg">Utvalg</a>';
+						<a href ="home.php" id="valg">Utvalg</a>
+					</td>';
 						drawLogoutBtn($db);
 						echo'
 				</tr>
@@ -318,13 +319,11 @@ function drawLogoutBtn($db){
 	}
 
 	if (isset($_SESSION['id'])){
-		echo '<a>|<a/><a href ="#mineutvalg" id="valg">Mine Utvalg</a><form method="POST" action=""></td><td width="45%"><a>';
+		echo '<td width="45%"><a>';
 		getUserSurnameName($db, $_SESSION['id']);
 		echo'</a><a>|<a/><a href ="session.php" id="valg"><div class="LogoutText">Logg ut</div></a></td>';
 	} else {
-		echo	'
-				</td>
-
+		echo	'<form method="POST" action="">
 					<td width="16%"><input type="text" name="loginbrukernavn" placeholder="Brukernavn" maxlength="45" class="input_banner"></td>
 					<td width="16%"><input type="password" name="loginpassord" placeholder="Passord" maxlength="30" class="input_banner"></td>
 					<td width="10%"><input type="submit" value="Logg inn" class="btn"></td>
