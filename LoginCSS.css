@@ -1,0 +1,24 @@
+#logo{
+	position: absolute;
+	top: 20px;
+	left: 305px;
+	margin: auto;
+}
+
+.formholder > form {
+	padding-top:20px;
+	margin: auto;
+	width:320px;
+}
+
+.formholder {
+	position: relative;
+	top: 500px;
+	margin: auto;
+	width: 960px;
+}
+
+.formholder table {width:100%;}
+.formholder input[type=submit] { width: 72px;}
+.formholder input{ width: 100%;}
+.formholder td { width: auto; }
