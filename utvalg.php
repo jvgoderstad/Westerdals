@@ -7,9 +7,6 @@ echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 
 drawHeader($db);
 
-$name = $_GET['utvalg'];
-echo "<p>THIS IS $name!<p/>";
-
 ?>
 
 <fieldset style="width: 800px; margin: auto;">
