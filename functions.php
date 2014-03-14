@@ -99,8 +99,10 @@ function addUtvalg($db, $name, $description, $shortdescription){
 }
 
 //Registers a user to an utvalg in the connection table. takes: db, userid, utvalgid. (returns true for successful register. else false)
-function addUserToUtvalg($db, $userid, $utvalgid){
-
+function addUserToUtvalg($db, $userid, $utvalgname){
+	
+	$utvalgid = getUtvalgIdOnName($db, $utvalgname);
+	
 	$stmt = $db->prepare("INSERT INTO user_utvalg(utvalg_id, users_id) VALUES(:utvalgid, :userid)");
 	$stmt->bindParam(':utvalgid', $utvalgid);
 	$stmt->bindParam(':userid', $userid);
@@ -143,6 +145,22 @@ function getUserList($db){
 	$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 	return $list;
+}
+
+//
+function getUtvalgIdOnName($db, $name){
+	$stmt = $db->prepare("SELECT id FROM utvalg WHERE name = :name");
+	$stmt->bindParam(':name', $name);
+
+	$utvalg = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	try{
+		@$stmt->execute();
+	}
+	catch(PDOException $e){
+		return false;
+	}
+	return $utvalg['id'];
 }
 
 //Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr). Eks: Array['0']['username']
