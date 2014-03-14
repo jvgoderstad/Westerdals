@@ -6,15 +6,10 @@ echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 
 drawHeader($db);
 
-if (!empty($_SESSION['id'])){
-	echo "<br/>";
+echo "<br/>";
 
-	echo '<section id="boxContainer">';
+echo '<section id="boxContainer">';
 	drawAllUtvalgThumbnail($db, 'box');
-	echo '</section>';
-
-} else {
-	
-}
+echo '</section>';
 
 ?>
