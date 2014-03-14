@@ -160,6 +160,22 @@ function getUtvalgList($db){
 	return $list;
 }
 
+//Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr). Eks: Array['0']['username']
+function getUtvalgListOnid($db, $userid){
+	$stmt = $db->prepare("SELECT name,description,shortdescription FROM utvalg LEFT JOIN user_utvalg ON utvalg.id = user_utvalg.utvalg_id WHERE user_utvalg.users_id = :userid");
+	$stmt->bindParam(':userid', $userid);
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+
+	}
+
+	$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	return $list;
+}
+
 //Returns a 2D Array of the 'users'-table that is registered to of the chosen utvalg. Eks: Array['0']['username']
 function getUserListInUtvalg($db, $utvalgid){
 	$stmt = $db->prepare("SELECT username,name,surname,epost,studentnr FROM users LEFT JOIN user_utvalg ON user_utvalg.users_id=users.id WHERE user_utvalg.utvalg_id = ':utvalgid'");
@@ -287,6 +303,35 @@ function drawAllUtvalgThumbnail($db, $class){
 	";
 	}
 }
+
+
+//Gets all the utvalg, and displays them through a defined div-tag, using the CSS-tag: $class.
+function drawAllUtvalgOnUserid($db, $class, $userid){
+
+	$list = getUtvalgListOnid($db, $userid);
+
+	$line = "";
+
+	foreach ($list as $item) {
+		$name = $item['name'];
+		$descr = $item['shortdescription'];
+		echo "
+			<a href='utvalg.php?utvalg=$name'>
+			<div class=$class>
+				<!--Tittel-->
+				<h1>$name</h1>
+
+				<!--Description-->
+				<br>
+				<p>
+					$descr
+				</p>
+			</div>
+			</a>
+	";
+	}
+}
+
 
 //Draws the HTML header
 function drawHeader($db){
