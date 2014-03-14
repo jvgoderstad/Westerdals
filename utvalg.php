@@ -35,7 +35,7 @@ if (isset($_GET['utvalg'])){
 	</fieldset>
 	";
 	/*if (isset($_SESSION['id'])){
-		echo '	<form method="POST" action="utvalg.php">
+		echo '	<form method="GET" action="utvalg.php">
 					<input type="submit" value="Meld deg inn" name="meldinn"/>
 				</form>
 		';
