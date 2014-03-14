@@ -360,7 +360,7 @@ function drawHeader($db){
 			<table>
 				<tr>
 					<td>
-						<a href ="home.php?selection=aktiviteter" class="valg">Aktiviteter</a>
+						<a href ="#aktiviteter" class="valg">Aktiviteter</a>
 						<a>|<a/>
 						<a href ="home.php" class="valg">Alle Utvalg</a>';
 						drawLogoutBtn($db);
@@ -383,14 +383,15 @@ function drawLogoutBtn($db){
 		echo '
 		<a>|<a/>
 		<a href ="home.php?selection=mineutvalg" class="valg">Mine Utvalg</a></td><td width="50%" align="right">
-		<a>';
+		<a id="brukernavn">';
 			getUserSurnameName($db, $_SESSION['id']);
 			echo'
 		</a>
 		</td>
 		<td>
-		<a>|<a/>
-		<a href ="session.php" class="valg" id="logg_out">Logg ut</a></td>';
+			<a>|<a/>
+			<a href ="session.php" class="valg" id="logg_out">Logg ut</a>
+		</td>';
 	}
 	else {
 		echo '
