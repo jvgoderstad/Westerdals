@@ -17,14 +17,15 @@ if (isset($_GET['utvalg'])){
 	$utvalgsnavn = $_GET['utvalg'];
 	echo "<br/><br/>
 	<fieldset style='width: 800px; margin: auto;'>
-		<legend>$utvalgsnavn</legend>
+		<legend>$utvalgsnavn</legend><br/>
 		<p>Suspendisse vitae felis orci. Cras eget enim ac risus dapibus sagittis quis pellentesque enim. Cras bibendum dapibus ligula, ut dapibus diam euismod in. In cursus vel tellus dapibus interdum.<br/> Quisque aliquam consectetur iaculis. Maecenas mollis convallis odio, ac ultricies urna auctor in. Fusce id erat nunc. Nam a vestibulum est, in posuere purus.<br/><br/> Donec ac augue vel risus convallis facilisis in ac dolor. Morbi ut purus et nulla sagittis consectetur ut vel orci. Proin sodales aliquam mi, id faucibus turpis vehicula ut. Curabitur vestibulum tincidunt justo eget fermentum.</p>
+		<br/>
 	</fieldset>
 	<br />
 	<br />
 	<fieldset style='width: 800px; margin: auto;'>
 	</style>
-		<legend>Arrangementer</legend>
+		<legend>Arrangementer</legend><br/>
 		<p>Her kommer det en liste over arrangementer dette utvalget arrangerer!</p><br/><br/>
 	</fieldset>
 	";
