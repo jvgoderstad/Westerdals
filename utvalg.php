@@ -42,5 +42,5 @@ if (isset($_GET['utvalg'])){
 	}*/
 } else {
 	echo "<br/>";
-	echo "Du er meldt inn i utvalget!";
+	//echo "Du er meldt inn i utvalget!";
 }
