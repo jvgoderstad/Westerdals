@@ -12,7 +12,7 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 .header-logo {
 	position: absolute;
 	left:80px;
-	top: 10px;
+	top: 20px;
 	height: 80px;
 	width: 80px;
 	-webkit-transform: rotate(-45deg);
@@ -46,7 +46,11 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 	height: 38px;
 }
 
+.valg {
+}
+
 .header-menu {
+	border: solid red 1px;
 	margin: auto;
 	margin-top: -40px;
 	width: 960px;
@@ -71,25 +75,27 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 }
 
 .header-menu a, #logg_in  {
+	border: solid red 1px;
 	color:#D0D0D0;
 	display:inline-block;
 	font-family: arial;
 	font-size: 20px;
-	padding-left: 10px;
 	padding-top: 0px;
-	text-align: center;
 	text-decoration: none;
 }
 
 #logg_in {
 	margin-top: 3px;
-	margin-right: 6px;
     background-color: transparent;
     cursor: pointer;
     border: none;
 }
 
 .valg:hover, #logg_in:hover {color:#0B9CE7;}
+
+.valg, #logg_in {
+	padding: 0 10px 0 10px;
+}
 
 #logg_in:focus {
     outline: 0;

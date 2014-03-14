@@ -100,9 +100,9 @@ function addUtvalg($db, $name, $description, $shortdescription){
 
 //Registers a user to an utvalg in the connection table. takes: db, userid, utvalgid. (returns true for successful register. else false)
 function addUserToUtvalg($db, $userid, $utvalgname){
-	
+
 	$utvalgid = getUtvalgIdOnName($db, $utvalgname);
-	
+
 	$stmt = $db->prepare("INSERT INTO user_utvalg(utvalg_id, users_id) VALUES(:utvalgid, :userid)");
 	$stmt->bindParam(':utvalgid', $utvalgid);
 	$stmt->bindParam(':userid', $userid);
@@ -357,10 +357,10 @@ function drawHeader($db){
 		</div>
 		<div class ="header-bot"></div>
 		<div class ="header-menu">
-			<table align="center">
+			<table>
 				<tr>
 					<td>
-						<a href ="home.php?selection=aktiviteter" class="valg">Aktiviteter</a>
+						<a href ="#aktiviteter" class="valg">Aktiviteter</a>
 						<a>|<a/>
 						<a href ="home.php" class="valg">Alle Utvalg</a>';
 						drawLogoutBtn($db);
@@ -380,10 +380,17 @@ function drawLogoutBtn($db){
 	}
 
 	if (isset($_SESSION['id'])){
-		echo '<a>|<a/>
-		<a href ="home.php?selection=mineutvalg" class="valg">Mine Utvalg</a></td><td width="45%"><a>';
-		getUserSurnameName($db, $_SESSION['id']);
-		echo'</a><a>|<a/><a href ="session.php" class="valg"><div id="logg_out">Logg ut</div></a></td>';
+		echo '
+		<a>|<a/>
+		<a href ="home.php?selection=mineutvalg" class="valg">Mine Utvalg</a></td><td width="50%" align="right">
+		<a>';
+			getUserSurnameName($db, $_SESSION['id']);
+			echo'
+		</a>
+		</td>
+		<td>
+		<a>|<a/>
+		<a href ="session.php" class="valg" id="logg_out">Logg ut</a></td>';
 	}
 	else {
 		echo '
@@ -396,4 +403,4 @@ function drawLogoutBtn($db){
 		</form>';
 	}
 }
-?>
+

@@ -33,31 +33,31 @@ echo '
 			<h1>Registrer ny bruker</h1>
 			<label>
 				<span>Fornavn</span>
-				<input type="text" class="input_text" name="fornavn" pattern="[A-Za-zØÆÅøæå-]{1,40}" required autofocus/>
+				<input type="text" class="input_text" name="fornavn" pattern="[A-Za-zØÆÅøæå]{1,20}" autofocus required="" title="Mellom 1-20 langt, tilatte tegnsett er: a-Å"/>
 			</label>
 			<label>
 				<span>Etternavn</span>
-				<input type="text" class="input_text" name="etternavn" pattern="[A-Za-zØÆÅøæå]{1,60}" required/>
+				<input type="text" class="input_text" name="etternavn" pattern="[A-Za-zØÆÅøæå]{1,20}" required="" title="Mellom 1-20 langt, tilatte tegnsett er: a-Å"/>
 			</label>
 			<label>
 				<span>Studentnr</span>
-				<input type="text" class="input_text" name="studentnummer" pattern="[0-9]{6}" required/>
+				<input type="text" class="input_text" name="studentnummer" pattern="[0-9]{6}" required="" title="Seks siffer fra 0-9"/>
 			</label>
 			<label>
 				<span>Brukernavn</span>
-				<input type="text" class="input_text" name="brukernavn" pattern="[A-Za-z0-9ØÆÅøæå_-]{3,15}" required/>
+				<input type="text" class="input_text" name="brukernavn" pattern="[A-Za-z0-9ØÆÅøæå_-]{3,15}" required="" title="Mellom 3-15 langt, tilatte tegnsett er: a-Å, _ og -"/>
 			</label>
 			<label>
 				<span>E-post</span>
-				<input type="email" class="input_text" name="email_1" required maxlength="60"/>
+				<input type="email" class="input_text" name="email_1" maxlength="60" required=""/>
 				<span>Gjenta</span>
-				<input type="email" class="input_text" name="email_2" id="emailForm" id="email required autocomplete="off" maxlength="60"/>
+				<input type="email" class="input_text" name="email_2" id="emailForm" id="email" autocomplete="off" maxlength="60" required=""/>
 			</label>
 			<label>
 				<span>Passord</span>
-				<input type="password" class="input_text" name="passord_1" required="" pattern=".{5,20}"/>
+				<input type="password" class="input_text" name="passord_1" pattern=".{5,20}" required="" title="Mellom 5 og 20 tegn"/>
 				<span>Gjenta</span>
-				<input type="password" class="input_text" name="passord_2" id="passordForm" required pattern=".{5,20}"/>
+				<input type="password" class="input_text" name="passord_2" id="passordForm" pattern=".{5,20}" required="" title="Mellom 5 og 20 tegn"/>
 			</label>
 			<label align="center">
 				<input type="submit"  class="button" value="Registrer">
