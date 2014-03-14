@@ -23,7 +23,7 @@ if (isset($_GET['utvalg'])){
 	<br />
 	<br />
 	<fieldset style='width: 800px; margin: auto;'>
-	</style>>
+	</style>
 		<legend>Arrangementer</legend>
 		<p>Her kommer det en liste over arrangementer dette utvalget arrangerer!</p><br/><br/>
 	</fieldset>
