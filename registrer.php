@@ -55,9 +55,9 @@ echo '
 			</label>
 			<label>
 				<span>Passord</span>
-				<input type="password" class="input_text" name="passord_1" required="" maxlength="30"/>
+				<input type="password" class="input_text" name="passord_1" required="" pattern=".{5,20}"/>
 				<span>Gjenta</span>
-				<input type="password" class="input_text" name="passord_2" id="passordForm" required maxlength="30"/>
+				<input type="password" class="input_text" name="passord_2" id="passordForm" required pattern=".{5,20}"/>
 			</label>
 			<label align="center">
 				<input type="submit"  class="button" value="Registrer">
