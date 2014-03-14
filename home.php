@@ -13,6 +13,10 @@ if (isset($_GET['selection'])){
 			drawAllUtvalgOnUserid($db, 'box', $_SESSION['id']);
 		echo '</section>';
 	}
+	if ($_GET['selection'] == 'aktiviteter'){
+		echo "<br/>";
+		echo "Liste over aktiviteter kommer senere!";
+	}
 } else {
 	echo "<br/>";
 	echo '<section id="boxContainer">';
