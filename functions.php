@@ -301,7 +301,7 @@ function drawHeader($db){
 					<td>
 						<a href ="#aktiviteter" class="valg">Aktiviteter</a>
 						<a>|<a/>
-						<a href ="home.php" class="valg">Utvalg</a>';
+						<a href ="home.php" class="valg">Alle Utvalg</a>';
 						drawLogoutBtn($db);
 						echo'
 				</tr>
