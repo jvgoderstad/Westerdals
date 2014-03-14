@@ -6,10 +6,11 @@ echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 
 drawHeader($db);
 
-?>
 
-<fieldset style="width: 800px; margin: auto;">
-	<legend>Utvalgsnavn</legend>
+$utvalgsnavn = $_GET['utvalg'];
+echo "<br/><br/>
+<fieldset style='width: 800px; margin: auto;'>
+	<legend>$utvalgsnavn</legend>
 	<p>asasdfasdggfdsgsdfasdf</p><br />
 	<p>asasdfasdggfdsgsasdfasdfdfasdf</p><br />
 	<p>asasdfasdggfdsgsdfasdf</p><br />
@@ -17,7 +18,7 @@ drawHeader($db);
 </fieldset>
 <br />
 <br />
-<fieldset style="width: 800px; margin: auto;">
+<fieldset style='width: 800px; margin: auto;'>
 </style>>
 	<legend>Arrangementer</legend>
 	<p>asasdfasdggfdsgsdfasdf</p><br />
@@ -25,3 +26,5 @@ drawHeader($db);
 	<p>asasdfasdggfdsgsdfasdf</p><br />
 	<p>asasdfasdggfdsgsasdfasdfdfasdf</p>
 </fieldset>
+";
+

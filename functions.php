@@ -160,7 +160,7 @@ function getUtvalgList($db){
 	return $list;
 }
 
-//Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr). Eks: Array['0']['username']
+//Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr) Based on a given user id. Eks: Array['0']['username']
 function getUtvalgListOnid($db, $userid){
 	$stmt = $db->prepare("SELECT name,description,shortdescription FROM utvalg LEFT JOIN user_utvalg ON utvalg.id = user_utvalg.utvalg_id WHERE user_utvalg.users_id = :userid");
 	$stmt->bindParam(':userid', $userid);
@@ -304,7 +304,6 @@ function drawAllUtvalgThumbnail($db, $class){
 	}
 }
 
-
 //Gets all the utvalg, and displays them through a defined div-tag, using the CSS-tag: $class.
 function drawAllUtvalgOnUserid($db, $class, $userid){
 
@@ -331,7 +330,6 @@ function drawAllUtvalgOnUserid($db, $class, $userid){
 	";
 	}
 }
-
 
 //Draws the HTML header
 function drawHeader($db){
