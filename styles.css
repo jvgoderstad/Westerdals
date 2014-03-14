@@ -2,6 +2,8 @@ body {
 	margin: 0;
 }
 
+*{ margin:0; padding:0;}
+
 *:focus {
 	outline-color: #0B9CE7;
 }
@@ -46,9 +48,6 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 	height: 38px;
 }
 
-.valg {
-}
-
 .header-menu {
 	margin: auto;
 	margin-top: -40px;
@@ -73,9 +72,8 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 	border-right:1px double #333;
 }
 
-.header-menu a, #logg_in  {
+.header-menu a, #logg_in {
 	color:#D0D0D0;
-	display:inline-block;
 	font-family: arial;
 	font-size: 20px;
 	padding-top: 0px;
@@ -101,8 +99,6 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
 /* ------------------------------ */
 /* register.php */
-
-*{ margin:0; padding:0;}
 body{ font:100% normal Arial, Helvetica, sans-serif; ;}
 form,input,select,textarea{margin:0; padding:0; color:#fff;}
 

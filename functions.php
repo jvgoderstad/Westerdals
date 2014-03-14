@@ -381,12 +381,12 @@ function drawLogoutBtn($db){
 
 	if (isset($_SESSION['id'])){
 		echo '
-		<a>|<a/>
-		<a href ="home.php?selection=mineutvalg" class="valg">Mine Utvalg</a></td><td width="50%" align="right">
-		<a id="brukernavn">';
-			getUserSurnameName($db, $_SESSION['id']);
-			echo'
-		</a>
+			<a>|<a/>
+			<a href ="home.php?selection=mineutvalg" class="valg">Mine Utvalg</a></td><td width="50%" align="right">
+			<a id="brukernavn">';
+				getUserSurnameName($db, $_SESSION['id']);
+				echo'
+			</a>
 		</td>
 		<td>
 			<a>|<a/>
@@ -395,12 +395,15 @@ function drawLogoutBtn($db){
 	}
 	else {
 		echo '
-		<form method="POST" action="">
-		</td>
-			<td width="16%"><input type="text" name="loginbrukernavn" placeholder="Brukernavn" maxlength="45" class="header_input" required></td>
-			<td width="16%"><input type="password" name="loginpassord" placeholder="Passord" maxlength="30" class="header_input" required></td>
-			<td width="10%"><input type="submit" value="Logg inn" id="logg_in"></td>
-			<td width="13%"><a>|<a/><a href ="registrer.php" class="valg">Ny bruker</a></td>
+			</td>
+			<form method="POST" action="">
+			<td align="right">
+				<input type="text" name="loginbrukernavn" placeholder="Brukernavn" maxlength="45" class="header_input" required>
+				<input type="password" name="loginpassord" placeholder="Passord" maxlength="30" class="header_input" required>
+				<input type="submit" value="Logg inn" id="logg_in">
+				<a>|<a/>
+				<a href ="registrer.php" class="valg">Ny bruker</a>
+			</td>
 		</form>';
 	}
 }
