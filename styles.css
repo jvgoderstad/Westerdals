@@ -50,7 +50,6 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 }
 
 .header-menu {
-	border: solid red 1px;
 	margin: auto;
 	margin-top: -40px;
 	width: 960px;
@@ -75,7 +74,6 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 }
 
 .header-menu a, #logg_in  {
-	border: solid red 1px;
 	color:#D0D0D0;
 	display:inline-block;
 	font-family: arial;
