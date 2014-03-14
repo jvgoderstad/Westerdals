@@ -320,7 +320,7 @@ function drawLogoutBtn($db){
 
 	if (isset($_SESSION['id'])){
 		echo '<a>|<a/>
-		<a href ="#mineutvalg" class="valg">Mine Utvalg</a></td><td width="45%"><a>';
+		<a href ="home.php?selection=mineutvalg" class="valg">Mine Utvalg</a></td><td width="45%"><a>';
 		getUserSurnameName($db, $_SESSION['id']);
 		echo'</a><a>|<a/><a href ="session.php" class="valg"><div id="logg_out">Logg ut</div></a></td>';
 	}

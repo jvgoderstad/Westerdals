@@ -2,8 +2,6 @@ body {
 	margin: 0;
 }
 
-
-
 *:focus {
 	outline-color: #0B9CE7;
 }
@@ -11,7 +9,6 @@ body {
 form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
 /* header styling */
-
 .header-logo {
 	position: absolute;
 	left:80px;
@@ -33,21 +30,13 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 }
 
 .header-bot {
-/*	width: 100%;
-	background-color: #242525;
-	height: 34px;
-	display: block;
-	background:#1C1C1C;
-	border-top:2px solid #262626;
-	border-bottom:4px solid #161712;*/
-
 	border-top: 1px solid #040404;
 	border-bottom: 1px solid #040404;
     background-color: #111111;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
-    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-    background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-    background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.15)), color-stop(100%, rgba(255, 255, 255, 0)));
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    background-image: -o-linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
     background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset;
