@@ -217,6 +217,7 @@ padding:12px 0 0 20px;
 }
 
 pre {
+	font-family: normal Arial, Helvetica, sans-serif;
     white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
     white-space: -pre-wrap; /* Opera */
     white-space: -o-pre-wrap; /* Opera */
