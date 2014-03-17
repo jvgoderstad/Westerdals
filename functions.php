@@ -154,7 +154,7 @@ function getUserList($db){
 	return $list;
 }
 
-//
+//Takes a userid and a utvalgname, and returns is the user is a member or not
 function isRegisteredInUtvalg($db, $userid, $utvalgid){
 	$stmt = $db->prepare('SELECT * FROM user_utvalg WHERE users_id = :userid AND utvalg_id = (SELECT id FROM utvalg WHERE name = :name)');
 	$stmt->bindParam(':userid', $userid);
@@ -177,7 +177,7 @@ function isRegisteredInUtvalg($db, $userid, $utvalgid){
 	
 }
 
-//
+//Returns the id of the given utvalgname
 function getUtvalgIdOnName($db, $name){
 	$stmt = $db->prepare("SELECT id FROM utvalg WHERE name = :name");
 	$stmt->bindParam(':name', $name);
@@ -210,7 +210,7 @@ function getUtvalgList($db){
 	return $list;
 }
 
-//
+//takes a utvalgname, and returns the long description of that utvalg
 function getUtvalgLongDescription($db, $utvalgname){
 	$stmt = $db->prepare("SELECT description FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
 	$stmt->bindParam(':name', $utvalgname);
