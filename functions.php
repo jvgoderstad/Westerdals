@@ -105,8 +105,6 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 	$stmt->bindParam(':name', $utvalgname);
 	$stmt->bindParam(':userid', $userid);
 
-	echo $utvalgname;
-
 	try{
 		$stmt->execute();
 		return true;
