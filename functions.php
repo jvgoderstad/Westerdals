@@ -216,7 +216,7 @@ function getUtvalgLongDescription($db, $utvalgname){
 	
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 	
-	echo $description['description'];
+	echo $result['description'];
 }
 
 //Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr) Based on a given user id. Eks: Array['0']['username']
