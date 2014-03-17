@@ -250,6 +250,7 @@ function getUtvalgLongDescription($db, $utvalgname){
 	echo $result['description'];
 }
 
+//
 function getUtvalgShortDescription($db, $utvalgname){
 	$stmt = $db->prepare("SELECT * FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
 	$stmt->bindParam(':name', $utvalgname);
@@ -266,6 +267,7 @@ function getUtvalgShortDescription($db, $utvalgname){
 	echo $result['shortdescription'];
 }
 
+//
 function getUtvalgLongName($db, $utvalgname){
 	$stmt = $db->prepare("SELECT * FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
 	$stmt->bindParam(':name', $utvalgname);

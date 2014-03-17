@@ -43,6 +43,15 @@ if (isset($_GET['utvalg'])){
 			</form>
 		";
 	}
+	
+	if (getAccess($db, $_SESSION['id']) == 1){
+		echo "
+			<form action="; echo"rediger_utvalg.php"; echo">
+				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='submit' class='button' value='Rediger'/>
+			</form>
+		";
+	}
 
 	echo "
 
@@ -58,6 +67,5 @@ if (isset($_GET['utvalg'])){
 }
 
 ?>
-
 
 
