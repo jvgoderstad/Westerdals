@@ -2,6 +2,7 @@
 //REQUIREMENTS FOR ALL PAGES
 require 'functions.php';
 echo '<link rel="stylesheet" type="text/css" href="style.css" />';
+echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 //REQUIREMENTS FOR ALL PAGES
 
 drawHeader($db);
@@ -48,8 +49,8 @@ if (isset($_GET['utvalg'])){
 	</fieldset>
 	<br />
 	<br />
-	<fieldset style='width: 800px; margin: auto;'>
-		<legend>Arrangementer</legend><br/>
+	<fieldset class='arrField'>
+		<legend class='arrLegend'>Arrangementer</legend><br/>
 		<p>Her kommer det en liste over arrangementer dette utvalget arrangerer!</p><br/><br/>
 	</fieldset>
 	";
