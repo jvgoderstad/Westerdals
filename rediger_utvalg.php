@@ -12,7 +12,7 @@ if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbesk
 }
 
 echo '
-	<form method="POST" action="nytt_utvalg.php">
+	<form method="POST" action="rediger_utvalg.php">
 		<div class="boxReg" id="largeBoxReg">
 			<h1>Rediger utvalg</h1>
 			<label>
