@@ -147,6 +147,29 @@ function getUserList($db){
 }
 
 //
+function isRegisteredInUtvalg($db, $userid, $utvalgid){
+	$stmt = $db->prepare('SELECT * FROM user_utvalg WHERE users_id = :userid AND utvalg_id = (SELECT id FROM utvalg WHERE name = :name)');
+	$stmt->bindParam(':userid', $userid);
+	$stmt->bindParam(':name', $utvalgid);
+	
+	try{
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+	}
+
+	$userinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+	if ($userinfo['utvalg_id'] == null){
+		return false;
+	} else {
+		return true;
+	}
+	
+}
+
+//
 function getUtvalgIdOnName($db, $name){
 	$stmt = $db->prepare("SELECT id FROM utvalg WHERE name = :name");
 	$stmt->bindParam(':name', $name);

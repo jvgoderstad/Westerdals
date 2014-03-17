@@ -6,9 +6,10 @@ echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 
 drawHeader($db);
 
+$utvalgid = $_GET['utvalg'];
+$userid = $_SESSION['id'];
+
 if (isset($_GET['meldinn'])){
-	$utvalgid = $_GET['utvalg'];
-	$userid = $_SESSION['id'];
 	addUserToUtvalg($db, $userid, $utvalgid);
 }
 
@@ -29,7 +30,7 @@ if (isset($_GET['utvalg'])){
 	</fieldset>
 	";
 	
-	if (isset($_SESSION['id'])){
+	if (isset($_SESSION['id']) && !isRegisteredInUtvalg($db, $userid, $utvalgid)){
 		$utvalg = $_GET['utvalg'];
 		echo "
 			<form action='utvalg.php' method='GET'>
