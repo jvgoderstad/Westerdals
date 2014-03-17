@@ -131,7 +131,7 @@ function editUtvalg($db, $name, $longname, $description, $shortdescription){
 	
 	$stmt->bindParam(':name', $name);
 	$stmt->bindParam(':longname', $longname);
-	$stmt->bindParam(':description', $description);
+	$stmt->bindParam(':longdescription', $description);
 	$stmt->bindParam(':shortdescription', $shortdescription);
 
 	try{
@@ -246,6 +246,38 @@ function getUtvalgLongDescription($db, $utvalgname){
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 	
 	echo $result['description'];
+}
+
+function getUtvalgShortDescription($db, $utvalgname){
+	$stmt = $db->prepare("SELECT * FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
+	$stmt->bindParam(':name', $utvalgname);
+	
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+		
+	}
+	
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+	echo $result['shortdescription'];
+}
+
+function getUtvalgLongName($db, $utvalgname){
+	$stmt = $db->prepare("SELECT * FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
+	$stmt->bindParam(':name', $utvalgname);
+	
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+		
+	}
+	
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+	echo $result['longname'];
 }
 
 //Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr) Based on a given user id. Eks: Array['0']['username']

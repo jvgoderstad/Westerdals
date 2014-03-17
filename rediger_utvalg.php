@@ -3,9 +3,11 @@ require 'functions.php';
 echo '<link rel="stylesheet" type="text/css" href="styles.css">';
 drawHeader($db);
 
+$utvalg = $_GET['utvalg'];
+
 if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbeskrivelse']) && isset($_POST['langbeskrivelse'])){
 	if (!empty($_POST['navn']) && !empty($_POST['kortnavn']) && !empty($_POST['kortbeskrivelse']) && !empty($_POST['langbeskrivelse'])){
-		addUtvalg($db, $_POST['navn'], $_POST['langbeskrivelse'], $_POST['kortbeskrivelse']);
+		editUtvalg($db, $_POST['kortnavn'], $_POST['navn'], $_POST['langbeskrivelse'], $_POST['kortbeskrivelse']);
 	}
 }
 
@@ -15,19 +17,19 @@ echo '
 			<h1>Rediger utvalg</h1>
 			<label>
 				<span>Navn</span>
-				<input type="text" class="input_text" value="" name="" autofocus required="" maxlength="50" title="Mellom 1-50 tegn langt."/>
+				<input type="text" class="input_text" value="'; getUtvalgLongName($db, $utvalg); echo'" name="navn" autofocus required="" maxlength="50" title="Mellom 1-50 tegn langt."/>
 			</label>
 			<label>
 				<span>Forkortelse av navn</span>
-				<input type="text" class="input_text" value="" name="" maxlength="6" required="" title="Mellom 1-6 tegn langt."/>
+				<input type="text" class="input_text" value="'; echo $utvalg; echo'" name="kortnavn" maxlength="6" required="" title="Mellom 1-6 tegn langt."/>
 			</label>
 			<label>
 				<span>Kort beskrivelse</span>
-				<input type="text" class="input_text" value="" name="" maxlength="80" required="" title="Mellom 1-80 tegn langt."/>
+				<input type="text" class="input_text" value="'; getUtvalgShortDescription($db, $utvalg); echo'" name="kortbeskrivelse" maxlength="80" required="" title="Mellom 1-80 tegn langt."/>
 			</label>
 			<label>
 				<span>Lang Beskrivelse</span>
-				<textarea rows="15" cols="200" value="" name="" required="" maxlength="1000" class="input_text" id="large_input_field" title="Mellom 1-80 tegn langt."></textarea>
+				<textarea rows="15" cols="200" value="" name="langbeskrivelse" required="" maxlength="1000" class="input_text" id="large_input_field" title="Mellom 1-80 tegn langt.">'; getUtvalgLongDescription($db, $utvalg); echo'</textarea>
 			</label>
 			<label align="center">
 				<input type="submit"  class="button" value="Opprett utvalg">
