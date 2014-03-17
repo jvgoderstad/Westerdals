@@ -152,6 +152,26 @@ border-right:1px double #333;
 }
 
 /*--------------------------------*/
+/* nytt_utvalg.php */
+#large_input_field {
+	width:860px;
+}
+
+#largeBoxReg {
+	width:900px;
+}
+
+#largeBoxReg label span {
+display: block;
+color:#bbb;
+font-size:12px;
+float:left;
+width:140px;
+text-align:right;
+padding:12px 0 0 0;
+}
+
+/*--------------------------------*/
 /* buttons */
 
 .button {
