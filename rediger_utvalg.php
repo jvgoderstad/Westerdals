@@ -32,7 +32,7 @@ echo "
 			</label>
 			<label>
 				<span>Lang Beskrivelse</span>
-				<textarea rows='15' cols='200' value='' name='langbeskrivelse' required='' maxlength='1000' class='input_text' id='large_input_field' title='Mellom 1-80 tegn langt.'>"; getUtvalgLongDescription($db, $utvalg); echo"</textarea>
+				<textarea rows='15' cols='200' value='' name='langbeskrivelse' required='' maxlength='5000' class='input_text' id='large_input_field' title='Mellom 1-80 tegn langt.'>"; getUtvalgLongDescription($db, $utvalg); echo"</textarea>
 			</label>
 			<label align='center'>
 				<input type='submit'  class='button' value='Lagre endringer'>
