@@ -7,7 +7,9 @@ echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 drawHeader($db);
 
 if (isset($_GET['meldinn'])){
-	addUserToUtvalg($db, $_SESSION['id'], $_GET['utvalg']);
+	$utvalgid = $_GET['utvalg'];
+	$userid = $_SESSION['id'];
+	addUserToUtvalg($db, $userid, $utvalgid);
 }
 
 
@@ -31,8 +33,8 @@ if (isset($_GET['utvalg'])){
 		$utvalg = $_GET['utvalg'];
 		echo "
 			<form action='utvalg.php' method='GET'>
-				<input type='hidden' name='utvalg' value=$utvalg/>
-				<input type='submit' value='Meld deg inn' name='meldinn'/>
+				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='submit' value='Meld deg inn' name='meldinn' />
 			</form>
 		";
 	}

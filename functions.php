@@ -105,12 +105,14 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 	$stmt->bindParam(':name', $utvalgname);
 	$stmt->bindParam(':userid', $userid);
 
+	echo $utvalgname;
+
 	try{
 		$stmt->execute();
 		return true;
 	}
 	catch(PDOException $e){
-		echo $e->getMessage();
+		echo "Du er allerede medlem av dette utvalget!";
 		return false;
 	}
 }
