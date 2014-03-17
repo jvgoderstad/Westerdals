@@ -23,6 +23,28 @@ if (isset($_GET['utvalg'])){
 		<legend>$utvalgsnavn</legend><br/>
 		<p>Suspendisse vitae felis orci. Cras eget enim ac risus dapibus sagittis quis pellentesque enim. Cras bibendum dapibus ligula, ut dapibus diam euismod in. In cursus vel tellus dapibus interdum.<br/> Quisque aliquam consectetur iaculis. Maecenas mollis convallis odio, ac ultricies urna auctor in. Fusce id erat nunc. Nam a vestibulum est, in posuere purus.<br/><br/> Donec ac augue vel risus convallis facilisis in ac dolor. Morbi ut purus et nulla sagittis consectetur ut vel orci. Proin sodales aliquam mi, id faucibus turpis vehicula ut. Curabitur vestibulum tincidunt justo eget fermentum.</p>
 		<br/>
+	";
+
+	if (isset($_SESSION['id']) && !isRegisteredInUtvalg($db, $userid, $utvalgid)){
+		$utvalg = $_GET['utvalg'];
+		echo "
+			<form action='utvalg.php' method='GET'>
+				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='submit' class='button' value='Meld deg inn' name='meldinn' />
+			</form>
+		";
+	} else if (isset($_SESSION['id']) && isRegisteredInUtvalg($db, $userid, $utvalgid)) {
+		$utvalg = $_GET['utvalg'];
+		echo "
+			<form action='utvalg.php' method='GET'>
+				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='submit' class='button' value='Meld deg ut' name='meldut' />
+			</form>
+		";
+	}
+
+	echo "
+
 	</fieldset>
 	<br />
 	<br />
@@ -31,25 +53,7 @@ if (isset($_GET['utvalg'])){
 		<p>Her kommer det en liste over arrangementer dette utvalget arrangerer!</p><br/><br/>
 	</fieldset>
 	";
-	
-	if (isset($_SESSION['id']) && !isRegisteredInUtvalg($db, $userid, $utvalgid)){
-		$utvalg = $_GET['utvalg'];
-		echo "
-			<form action='utvalg.php' method='GET'>
-				<input type='hidden' name='utvalg' value=$utvalg />
-				<input type='submit' value='Meld deg inn' name='meldinn' />
-			</form>
-		";
-	} else if (isset($_SESSION['id']) && isRegisteredInUtvalg($db, $userid, $utvalgid)) {
-		$utvalg = $_GET['utvalg'];
-		echo "
-			<form action='utvalg.php' method='GET'>
-				<input type='hidden' name='utvalg' value=$utvalg />
-				<input type='submit' value='Meld deg ut' name='meldut' />
-			</form>
-		";
-	}
-	
+
 }
 
 ?>
