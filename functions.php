@@ -100,11 +100,9 @@ function addUtvalg($db, $name, $description, $shortdescription){
 
 //Registers a user to an utvalg in the connection table. takes: db, userid, utvalgid. (returns true for successful register. else false)
 function addUserToUtvalg($db, $userid, $utvalgname){
-
-	$utvalgid = getUtvalgIdOnName($db, $utvalgname);
-
-	$stmt = $db->prepare("INSERT INTO user_utvalg(utvalg_id, users_id) VALUES(:utvalgid, :userid)");
-	$stmt->bindParam(':utvalgid', $utvalgid);
+	
+	$stmt = $db->prepare("INSERT INTO user_utvalg(utvalg_id, users_id) VALUES((SELECT id FROM utvalg WHERE name = :name), :userid)");
+	$stmt->bindParam(':utvalgname', $utvalgname);
 	$stmt->bindParam(':userid', $userid);
 
 	try{
@@ -112,6 +110,7 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 		return true;
 	}
 	catch(PDOException $e){
+		echo $e->getMessage();
 		return false;
 	}
 }
@@ -152,14 +151,16 @@ function getUtvalgIdOnName($db, $name){
 	$stmt = $db->prepare("SELECT id FROM utvalg WHERE name = :name");
 	$stmt->bindParam(':name', $name);
 
-	$utvalg = $stmt->fetch(PDO::FETCH_ASSOC);
-
 	try{
-		@$stmt->execute();
+		$stmt->execute();
 	}
 	catch(PDOException $e){
+		echo $e->getMessage();
 		return false;
 	}
+	
+	$utvalg = $stmt->fetch(PDO::FETCH_ASSOC);
+	
 	return $utvalg['id'];
 }
 
