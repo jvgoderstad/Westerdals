@@ -1,15 +1,16 @@
 body {
 	margin: 0;
 	background-color: #F1F1F1;
+	font:100% normal Arial, Helvetica, sans-serif;
 }
+
+form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
 *{ margin:0; padding:0;}
 
 *:focus {
 	outline-color: #0B9CE7;
 }
-
-form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
 /* header styling */
 .header-logo {
@@ -99,8 +100,6 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
 /* ------------------------------ */
 /* register.php */
-body{ font:100% normal Arial, Helvetica, sans-serif; ;}
-form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
 div.boxReg {
 margin:0 auto;
@@ -153,12 +152,18 @@ border-right:1px double #333;
 
 /*--------------------------------*/
 /* nytt_utvalg.php */
-#large_input_field {
-	width:860px;
+#largeBoxReg .input_text {
+	font-family: normal Arial, Helvetica, sans-serif;
+	width:55%;
 }
 
 #largeBoxReg {
 	width:900px;
+}
+
+#large_input_field {
+
+	width: 50%;
 }
 
 #largeBoxReg label span {
@@ -167,8 +172,8 @@ color:#bbb;
 font-size:12px;
 float:left;
 width:140px;
-text-align:right;
-padding:12px 0 0 0;
+text-align:left;
+padding:12px 0 0 20px;
 }
 
 /*--------------------------------*/
