@@ -116,10 +116,10 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 }
 
 //Registers a user to an utvalg in the connection table. takes: db, userid, utvalgid. (returns true for successful register. else false)
-function removeUserFromUtvalg($db, $userid, $utvalgid){
+function removeUserFromUtvalg($db, $userid, $utvalgname){
 
-	$stmt = $db->prepare("DELETE FROM user_utvalg WHERE users_id=':userid' AND utvalg_id=':utvalgid'");
-	$stmt->bindParam(':utvalgid', $utvalgid);
+	$stmt = $db->prepare("DELETE FROM user_utvalg WHERE users_id=:userid AND utvalg_id=(SELECT id FROM utvalg WHERE name = :name)");
+	$stmt->bindParam(':name', $utvalgname);
 	$stmt->bindParam(':userid', $userid);
 
 	try{

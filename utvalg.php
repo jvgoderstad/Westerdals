@@ -11,6 +11,8 @@ $userid = $_SESSION['id'];
 
 if (isset($_GET['meldinn'])){
 	addUserToUtvalg($db, $userid, $utvalgid);
+} else if (isset($_GET['meldut'])){
+	removeUserFromUtvalg($db, $userid, $utvalgid);
 }
 
 
@@ -36,6 +38,14 @@ if (isset($_GET['utvalg'])){
 			<form action='utvalg.php' method='GET'>
 				<input type='hidden' name='utvalg' value=$utvalg />
 				<input type='submit' value='Meld deg inn' name='meldinn' />
+			</form>
+		";
+	} else {
+		$utvalg = $_GET['utvalg'];
+		echo "
+			<form action='utvalg.php' method='GET'>
+				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='submit' value='Meld deg ut' name='meldut' />
 			</form>
 		";
 	}
