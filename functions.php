@@ -102,7 +102,7 @@ function addUtvalg($db, $name, $description, $shortdescription){
 function addUserToUtvalg($db, $userid, $utvalgname){
 	
 	$stmt = $db->prepare("INSERT INTO user_utvalg(utvalg_id, users_id) VALUES((SELECT id FROM utvalg WHERE name = :name), :userid)");
-	$stmt->bindParam(':utvalgname', $utvalgname);
+	$stmt->bindParam(':name', $utvalgname);
 	$stmt->bindParam(':userid', $userid);
 
 	try{
