@@ -3,13 +3,15 @@ require 'functions.php';
 echo '<link rel="stylesheet" type="text/css" href="styles.css">';
 drawHeader($db);
 
-$utvalg = $_GET['utvalg'];
+
 
 if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbeskrivelse']) && isset($_POST['langbeskrivelse'])){
 	if (!empty($_POST['navn']) && !empty($_POST['kortnavn']) && !empty($_POST['kortbeskrivelse']) && !empty($_POST['langbeskrivelse'])){
 		editUtvalg($db, $_POST['kortnavn'], $_POST['navn'], $_POST['langbeskrivelse'], $_POST['kortbeskrivelse']);
 	}
 }
+
+$utvalg = $_GET['utvalg'];
 
 echo '
 	<form method="POST" action="rediger_utvalg.php">
