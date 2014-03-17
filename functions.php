@@ -42,10 +42,14 @@ function login($db, $username, $password){
 	if (trim((string)mcrypt_decrypt(MCRYPT_RIJNDAEL_128, 'encrKey12', $userinfo['password'], MCRYPT_MODE_CBC)) === (string)$password){
 		$_SESSION['id'] = $userinfo['id'];
 		$_SESSION['access'] = $userinfo['access'];
-		if ($_SERVER['PHP_SELF'] == 'registrer.php'){
+		if ($_SERVER['PHP_SELF'] == '/~ingmag13/registrer.php'){
 			header('Location: home.php');
 		} else {
-			header('Location: '.$_SERVER['PHP_SELF']);
+			if (isset($_GET['utvalg'])){
+				header('Location: '.basename($_SERVER["SCRIPT_FILENAME"], 'home/ingmag13/public_html/').'?utvalg='.$_GET['utvalg']);
+			} else {
+				header('Location: '.basename($_SERVER["SCRIPT_FILENAME"], 'home/ingmag13/public_html/'));
+			}
 		}
 	} else {
 		//INVALID USER PRINT
