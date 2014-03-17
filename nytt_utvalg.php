@@ -5,7 +5,7 @@ drawHeader($db);
 
 if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbeskrivelse']) && isset($_POST['langbeskrivelse'])){
 	if (!empty($_POST['navn']) && !empty($_POST['kortnavn']) && !empty($_POST['kortbeskrivelse']) && !empty($_POST['langbeskrivelse'])){
-		addUtvalg($db, $_POST['navn'], $_POST['langbeskrivelse'], $_POST['kortbeskrivelse']);
+		addUtvalg($db, $_POST['kortnavn'], $_POST['navn'], $_POST['langbeskrivelse'], $_POST['kortbeskrivelse']);
 	}
 }
 
