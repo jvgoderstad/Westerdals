@@ -99,6 +99,7 @@ function addUtvalg($db, $name, $description, $shortdescription){
 
 	try{
 		@$stmt->execute();
+		header('Location: home.php');
 		return true;
 	}
 	catch(PDOException $e){
