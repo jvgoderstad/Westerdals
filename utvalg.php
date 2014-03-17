@@ -5,13 +5,11 @@ echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 //REQUIREMENTS FOR ALL PAGES
 
 drawHeader($db);
-if (isset($_GET['utvalg'])){
-	if (isset($_POST['meldinn'])){
-		if (!empty($_POST['meldinn'])){
-			addUserToUtvalg($db, $_SESSION['id'], $_GET['utvalg']);
-		}
-	}
+
+if (isset($_GET['meldinn'])){
+	addUserToUtvalg($db, $_SESSION['id'], $_GET['utvalg']);
 }
+
 
 if (isset($_GET['utvalg'])){
 	$utvalgsnavn = $_GET['utvalg'];
@@ -24,18 +22,24 @@ if (isset($_GET['utvalg'])){
 	<br />
 	<br />
 	<fieldset style='width: 800px; margin: auto;'>
-	</style>
 		<legend>Arrangementer</legend><br/>
 		<p>Her kommer det en liste over arrangementer dette utvalget arrangerer!</p><br/><br/>
 	</fieldset>
 	";
-	/*if (isset($_SESSION['id'])){
-		echo '	<form method="GET" action="utvalg.php">
-					<input type="submit" value="Meld deg inn" name="meldinn"/>
-				</form>
-		';
-	}*/
-} else {
-	echo "<br/>";
-	//echo "Du er meldt inn i utvalget!";
+	
+	if (isset($_SESSION['id'])){
+		$utvalg = $_GET['utvalg'];
+		echo "
+			<form action='utvalg.php' method='GET'>
+				<input type='hidden' name='utvalg' value=$utvalg/>
+				<input type='submit' value='Meld deg inn' name='meldinn'/>
+			</form>
+		";
+	}
+	
 }
+
+?>
+
+
+
