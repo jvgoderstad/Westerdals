@@ -17,12 +17,7 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 	left:80px;
 	top: 20px;
 	height: 80px;
-	width: 80px;
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	transform: rotate(-45deg);
+	width: 160px;
 }
 
 .header-top {
@@ -92,6 +87,10 @@ form,input,select,textarea{margin:0; padding:0; color:#fff;}
 
 .valg, #logg_in, #brukernavn {
 	padding: 0 5px 0 5px;
+}
+
+#logg_out {
+	margin-right: 10px;
 }
 
 #logg_in:focus {

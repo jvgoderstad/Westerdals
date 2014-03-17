@@ -108,7 +108,7 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 	$stmt->bindParam(':userid', $userid);
 
 	try{
-		@$stmt->execute();
+		$stmt->execute();
 		return true;
 	}
 	catch(PDOException $e){
