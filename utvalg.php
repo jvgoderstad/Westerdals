@@ -22,7 +22,7 @@ if (isset($_GET['utvalg'])){
 	echo "<br/><br/>
 	<fieldset style='width: 800px; margin: auto;'>
 		<legend>$utvalgsnavn</legend><br/>
-		<p>"; getUtvalgLongDescription($db, $utvalgsnavn); echo"</p>
+		<pre>"; getUtvalgLongDescription($db, $utvalgsnavn); echo"</pre>
 		<br/>
 	";
 
