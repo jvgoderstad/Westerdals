@@ -126,10 +126,11 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 }
 
 //
-function editUtvalg($db, $name, $longname, $description, $shortdescription){
-	$stmt = $db->prepare("UPDATE `ingmag13`.`utvalg` SET `name` = :name, `longname` = :longname, `description` = :longdescription, `shortdescription` = :shortdescription WHERE `id` = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
+function editUtvalg($db, $name, $newshortname, $longname, $description, $shortdescription){
+	$stmt = $db->prepare("UPDATE `ingmag13`.`utvalg` SET `name` = :newshortname, `longname` = :longname, `description` = :longdescription, `shortdescription` = :shortdescription WHERE `id` = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
 	
 	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':newshortname', $newshortname);
 	$stmt->bindParam(':longname', $longname);
 	$stmt->bindParam(':longdescription', $description);
 	$stmt->bindParam(':shortdescription', $shortdescription);
