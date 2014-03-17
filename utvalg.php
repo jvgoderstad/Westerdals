@@ -40,7 +40,7 @@ if (isset($_GET['utvalg'])){
 				<input type='submit' value='Meld deg inn' name='meldinn' />
 			</form>
 		";
-	} else {
+	} else if (isset($_SESSION['id']) && isRegisteredInUtvalg($db, $userid, $utvalgid)) {
 		$utvalg = $_GET['utvalg'];
 		echo "
 			<form action='utvalg.php' method='GET'>
