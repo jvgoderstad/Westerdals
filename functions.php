@@ -125,6 +125,25 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 	}
 }
 
+//
+function editUtvalg($db, $name, $longname, $description, $shortdescription){
+	$stmt = $db->prepare("UPDATE `ingmag13`.`utvalg` SET `name` = :name, `longname` = :longname, `description` = :longdescription, `shortdescription` = :shortdescription WHERE `id` = (SELECT id FROM utvalg WHERE name = :name)");
+	
+	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':longname', $longname);
+	$stmt->bindParam(':description', $description);
+	$stmt->bindParam(':shortdescription', $shortdescription);
+
+	try{
+		@$stmt->execute();
+		header('Location: home.php');
+		return true;
+	}
+	catch(PDOException $e){
+		return false;
+	}
+}
+
 //Registers a user to an utvalg in the connection table. takes: db, userid, utvalgid. (returns true for successful register. else false)
 function removeUserFromUtvalg($db, $userid, $utvalgname){
 
