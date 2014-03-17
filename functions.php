@@ -92,8 +92,9 @@ function addUser($db, $newusername, $newpassword, $newname, $newsurname, $newema
 
 //Registering a user on a specified utvalgdb, takes: db, name, description, shortdescription. (returns true for successful register. else false)
 function addUtvalg($db, $name, $longname, $description, $shortdescription){
-	$stmt = $db->prepare("INSERT INTO utvalg(name, longname, description, shortdescription) VALUES(:name, :description, :shortdescription)");
+	$stmt = $db->prepare("INSERT INTO utvalg(name, longname, description, shortdescription) VALUES(:name, longname, :description, :shortdescription)");
 	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':longname', $longname);
 	$stmt->bindParam(':description', $description);
 	$stmt->bindParam(':shortdescription', $shortdescription);
 
