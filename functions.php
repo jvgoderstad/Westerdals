@@ -202,6 +202,23 @@ function getUtvalgList($db){
 	return $list;
 }
 
+//
+function getUtvalgLongDescription($db, $utvalgname){
+	$stmt = $db->prepare("SELECT description FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
+	$stmt->bindParam(':name', $utvalgname);
+	
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+		
+	}
+	
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+	echo $description['description'];
+}
+
 //Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr) Based on a given user id. Eks: Array['0']['username']
 function getUtvalgListOnid($db, $userid){
 	$stmt = $db->prepare("SELECT name,description,shortdescription FROM utvalg LEFT JOIN user_utvalg ON utvalg.id = user_utvalg.utvalg_id WHERE user_utvalg.users_id = :userid");
