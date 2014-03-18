@@ -13,16 +13,14 @@ if (isset($_POST['navn']) && isset($_POST['startdato']) && isset($_POST['utvalg'
 		addArrangement($db, $_POST['utvalg'], $_POST['navn'], $_POST['kortbeskrivelse'], $_POST['langbeskrivelse'], $_POST['startdato'], $_POST['sluttdato']);
 	}
 } else {
-	if (isset($_GET['utvalg'])){
-		$utvalg = $_GET['utvalg'];
-	}
+	$utvalg = $_GET['utvalg'];
 }
 
 echo "
 	<form method='POST' action='registrer_aktivitet.php'>
 	<input type='hidden' name='utvalg' value='$utvalg' />
 		<div class='boxReg' id='largeBoxReg'>
-			<h1>Registrer ny aktivitet</h1>
+			<h1>Registrer nytt arrangement</h1>
 			<label>
 				<span>Navn</span>
 				<input type='text' class='input_text' name='navn' autofocus required='' maxlength='50' title='Mellom 1-50 tegn langt.'/>

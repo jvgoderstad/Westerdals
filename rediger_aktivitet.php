@@ -17,7 +17,7 @@ if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbesk
 echo '
 	<form method="POST" action="rediger_aktivitet.php">
 		<div class="boxReg" id="largeBoxReg">
-			<h1>Rediger aktivitet</h1>
+			<h1>Rediger arrangement</h1>
 			<label>
 				<span>Navn</span>
 				<input type="text" class="input_text" value="" name="" autofocus required="" maxlength="50" title="Mellom 1-50 tegn langt."/>
