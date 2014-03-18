@@ -50,7 +50,8 @@ if (isset($_GET['utvalg'])){
 		";
 	}
 	
-	if (getAccess($db, $_SESSION['id']) == 1){
+	if (isset($_SESSION['id'])){
+		if (getAccess($db, $_SESSION['id']) == 1){
 		echo "
 			<form action="; echo"rediger_utvalg.php"; echo">
 				<input type='hidden' name='utvalg' value=$utvalg />
@@ -69,7 +70,9 @@ if (isset($_GET['utvalg'])){
 				<input type='submit' class='button' value='Slett Utvalget' name='slettutvalg'/>
 			</form>
 		";
+		}
 	}
+	
 
 	echo "
 
