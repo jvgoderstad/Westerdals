@@ -642,6 +642,9 @@ function drawMenu($db){
 		if (getAccess($db, $_SESSION['id']) == 1 || getAccess($db, $_SESSION['id']) == 2){
 			echo '<li><a href="nytt_utvalg.php">Opprett utvalg</a></li>';
 		}
+		if (getAccess($db, $_SESSION['id']) == 2){
+			echo '<li><a href="">Administrasjon</a></li>';
+		}
 		echo '<li><a href="session.php">Logg ut</a></li>';
 	}
 }
