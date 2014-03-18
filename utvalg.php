@@ -55,7 +55,7 @@ if (isset($_GET['utvalg'])){
 			</form>
 		";
 		echo "
-			<form action="; echo""; echo">
+			<form action="; echo"registrer_arrangement.php"; echo">
 				<input type='hidden' name='utvalg' value=$utvalg />
 				<input type='submit' class='button' value='Opprett Arrangement'/>
 			</form>
