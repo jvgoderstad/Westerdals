@@ -511,7 +511,7 @@ function drawAllArrangementThumbnail($db, $class){
 		$name = $item['name'];
 		$descr = $item['shortdescription'];
 		echo "
-			<a href=''>
+			<a href='arrangement.php?arrangement=$name'>
 			<div class=$class>
 				<!--Tittel-->
 				<h1>$name</h1>
