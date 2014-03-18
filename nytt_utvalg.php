@@ -19,27 +19,24 @@ echo '
 	<fieldset>
 		<div class="pure-control-group">
 			<label for="name">Navn</label>
-			<input type="text" class="pure-input-1-2" name="navn" autofocus required="" maxlength="50" title="Mellom 1-50 tegn langt."/>
+			<input type="text" class="pure-input pure-u-3-4" name="navn" autofocus required="" maxlength="50" title="Mellom 1-50 tegn langt."/>
 		</div>
 		<div class="pure-control-group">
 			<label for="name">Forkortelse av navn</label>
-			<input type="text" class="pure-input-1-2" name="kortnavn" maxlength="6" required="" title="Mellom 1-6 tegn langt."/>
+			<input type="text" class="pure-input pure-u-3-4" name="kortnavn" maxlength="6" required="" title="Mellom 1-6 tegn langt."/>
 		</div>
 		<div class="pure-control-group">
 			<label for="name">Kort beskrivelse</label>
-			<input type="text" class="pure-input-1-2"  name="kortbeskrivelse" maxlength="80" required="" title="Mellom 1-80 tegn langt."/>
+			<input type="text" class="pure-input pure-u-3-4"  name="kortbeskrivelse" maxlength="80" required="" title="Mellom 1-80 tegn langt."/>
 		</div>
 		<div class="pure-control-group">
 			<label for="name">Lang beskrivelse</label>
-			<textarea rows="15" cols="200" name="langbeskrivelse" required="" maxlength="5000" class="input_text" id="large_input_field" title="Mellom 1-80 tegn langt."></textarea>
+			<textarea rows="15" cols="200" class="input_text pure-u-3-4" name="langbeskrivelse" required="" maxlength="5000" title="Mellom 1-80 tegn langt."></textarea>
 		</div>
 		<div class="pure-control-group">
 			<label></label>
-			<button type="submit" class="pure-button pure-input-1-2 pure-button-primary">Opprett utvalg</button>
+			<button type="submit" class="pure-button pure-u-3-4 pure-button-primary">Opprett utvalg</button>
 		</div>
 	</fieldset>
-</form>
-
-
-';
+</form>';
 ?>

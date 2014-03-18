@@ -646,12 +646,12 @@ function drawHeader($db){
 		if ($_GET['selection'] == 'aktiviteter'){
 			$currentpage = 'Arrangementer';
 			$currentpageinlineplural = 'Alle arrangementene på Westerdals';
-			
+
 		}
 		if ($_GET['selection'] == 'mineutvalg'){
 			$currentpage = 'Mine Utvalg';
 			$currentpageinlineplural = 'Alle utvalgene du er medlem av på Westerdals';
-			
+
 		}
 	}
 	if (isset($_GET['utvalg'])){
@@ -662,7 +662,7 @@ function drawHeader($db){
 			$currentpage = $_GET['arrangement'];
 			$currentpageinlineplural = 'Informasjon om arrangementet '.$_GET['arrangement'];
 	}
-	
+
 	echo "
 	<div id='layout'>
     <div id='main'>
@@ -730,11 +730,11 @@ function drawMenu($db){
 	if (isset($_SESSION['id'])){
 		echo '<li><a href="home.php?selection=mineutvalg">Mine utvalg</a></li>';
 		if (getAccess($db, $_SESSION['id']) == 1 || getAccess($db, $_SESSION['id']) == 2){
-			echo '<li><a href="nytt_utvalg.php">Opprett utvalg</a></li>';
+			echo '<li class="menu-item-divided"><a href="nytt_utvalg.php">Opprett utvalg</a></li>';
 		}
 		if (getAccess($db, $_SESSION['id']) == 2){
 			echo '<li><a href="">Administrasjon</a></li>';
 		}
-		echo '<li><a href="session.php">Logg ut</a></li>';
+		echo '<li class="menu-item-divided"><a href="session.php">Logg ut</a></li>';
 	}
 }

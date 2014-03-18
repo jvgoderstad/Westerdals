@@ -17,30 +17,30 @@ if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbesk
 }
 
 echo "
-	<form method='POST' action='rediger_utvalg.php'>
-		<div class='boxReg' id='largeBoxReg'>
-			<h1>Rediger utvalg</h1>
-			<input type='hidden' value='$utvalg' name='oldname' />
-			<label>
-				<span>Navn</span>
-				<input type='text' class='input_text' value='"; getUtvalgLongName($db, $utvalg); echo"' name='navn' autofocus required='' maxlength='50' title='Mellom 1-50 tegn langt.'/>
-			</label>
-			<label>
-				<span>Forkortelse av navn</span>
-				<input type='text' class='input_text' value='"; echo $utvalg; echo"' name='kortnavn' maxlength='6' required='' title='Mellom 1-6 tegn langt.'/>
-			</label>
-			<label>
-				<span>Kort beskrivelse</span>
-				<input type='text' class='input_text' value='"; getUtvalgShortDescription($db, $utvalg); echo"' name='kortbeskrivelse' maxlength='80' required='' title='Mellom 1-80 tegn langt.'/>
-			</label>
-			<label>
-				<span>Lang Beskrivelse</span>
-				<textarea rows='15' cols='200' value='' name='langbeskrivelse' required='' maxlength='5000' class='input_text' id='large_input_field' title='Mellom 1-5000 tegn langt.'>"; getUtvalgLongDescription($db, $utvalg); echo"</textarea>
-			</label>
-			<label align='center'>
-				<input type='submit'  class='button' value='Lagre endring'>
-			</label>
+<form method='POST' action='rediger_utvalg.php' class='pure-form pure-form-aligned'>
+	<fieldset>
+		<input type='hidden' value='$utvalg' name='oldname' />
+		<div class='pure-control-group'>
+			<label for='name'>Navn</label>
+			<input type='text' class='pure-u-3-4' value='"; getUtvalgLongName($db, $utvalg); echo"' name='navn' autofocus required='' maxlength='50' title='Mellom 1-50 tegn langt.'/>
 		</div>
-	</form>
+		<div class='pure-control-group'>
+			<label for='name'>Forkortelse av navn</label>
+			<input type='text' class='pure-u-3-4' value='"; echo $utvalg; echo"' name='kortnavn' maxlength='6' required='' title='Mellom 1-6 tegn langt.'/>
+		</div>
+		<div class='pure-control-group'>
+			<label for='name'>Kort beskrivelse</label>
+			<input type='text' class='pure-u-3-4' value='"; getUtvalgShortDescription($db, $utvalg); echo"' name='kortbeskrivelse' maxlength='80' required='' title='Mellom 1-80 tegn langt.'/>
+		</div>
+		<div class='pure-control-group'>
+			<label for='name'>Lang beskrivelse</label>
+			<textarea rows='15' cols='200' name='langbeskrivelse' required='' maxlength='5000' class='pure-u-3-4' title='Mellom 1-80 tegn langt.'>"; getUtvalgLongDescription($db, $utvalg); echo"</textarea>
+		</div>
+		<div class='pure-control-group'>
+			<label></label>
+			<button type='submit' class='pure-button pure-u-3-4 pure-button-primary'>Lagre endring</button>
+		</div>
+	</fieldset>
+</form>
 ";
 ?>
