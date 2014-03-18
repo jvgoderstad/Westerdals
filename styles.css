@@ -119,6 +119,8 @@ pre {
 /* main.css */
 body {
 	overflow-x: hidden;
+	background-image:url('bg.gif');
+	background-repeat: repeat;
 }
 
 #boxContainer{
