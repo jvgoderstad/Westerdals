@@ -35,7 +35,7 @@ echo '
 		</div>
 		<div class="pure-control-group">
 			<label></label>
-			<button type="submit" class="pure-button pure-button-primary">Opprett utvalg</button>
+			<button type="submit" class="pure-button pure-input-1-2 pure-button-primary">Opprett utvalg</button>
 		</div>
 	</fieldset>
 </form>

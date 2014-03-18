@@ -65,7 +65,7 @@ if (isset($_POST['fornavn']) && isset($_POST['etternavn']) && isset($_POST['stud
 		</div  class="pure-control-group">
 		<div class="pure-control-group">
 			<label></label>
-			<button type="submit" class="pure-button pure-button-primary">Registrer</button>
+			<button type="submit" class="pure-button pure-input-1-3 pure-button-primary">Registrer</button>
 		</div>
 	</fieldset>
 </form>
