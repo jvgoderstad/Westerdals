@@ -37,7 +37,7 @@ if (isset($_GET['utvalg'])){
 		echo "
 			<form action='utvalg.php' method='GET'>
 				<input type='hidden' name='utvalg' value=$utvalg />
-				<input type='submit' class='button' value='Meld deg inn' name='meldinn' />
+				<input type='submit' class='pure-button pure-button-primary' value='Meld deg inn' name='meldinn' />
 			</form>
 		";
 	} else if (isset($_SESSION['id']) && isRegisteredInUtvalg($db, $userid, $utvalgid)) {
@@ -45,7 +45,7 @@ if (isset($_GET['utvalg'])){
 		echo "
 			<form action='utvalg.php' method='GET'>
 				<input type='hidden' name='utvalg' value=$utvalg />
-				<input type='submit' class='button' value='Meld deg ut' name='meldut' />
+				<input type='submit' class='pure-button pure-button-primary' value='Meld deg ut' name='meldut' />
 			</form>
 		";
 	}
@@ -55,19 +55,19 @@ if (isset($_GET['utvalg'])){
 		echo "
 			<form action="; echo"rediger_utvalg.php"; echo">
 				<input type='hidden' name='utvalg' value=$utvalg />
-				<input type='submit' class='button' value='Rediger'/>
+				<input type='submit' class='pure-button pure-button-primary' value='Rediger'/>
 			</form>
 		";
 		echo "
 			<form action="; echo"registrer_aktivitet.php"; echo">
 				<input type='hidden' name='utvalg' value=$utvalg />
-				<input type='submit' class='button' value='Opprett Arrangement'/>
+				<input type='submit' class='pure-button pure-button-primary' value='Opprett Arrangement'/>
 			</form>
 		";
 		echo "
 			<form action="; echo"utvalg.php"; echo" method='GET'>
 				<input type='hidden' name='utvalg' value=$utvalg />
-				<input type='submit' class='button' value='Slett Utvalget' name='slettutvalg'/>
+				<input type='submit' class='pure-button pure-button-primary' value='Slett Utvalget' name='slettutvalg'/>
 			</form>
 		";
 		}
