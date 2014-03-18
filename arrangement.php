@@ -23,7 +23,7 @@ if (isset($_GET['arrangement'])){
 	echo "<br/><br/>
 	<fieldset class='arrField'>
 		<legend class='arrLegend'>$arrangementnavn</legend><br/>
-		<pre>Her kommer den lange beskrivelsen av arrangementet</pre>
+		<pre>"; getArrangementLongDescription($db, $arrangementnavn); echo"</pre>
 		<br/>
 	";
 		if (isset($_SESSION['id']) && !isAttendingArrangement($db, $userid, $arrangementnavn)){

@@ -204,6 +204,7 @@ function removeUserFromUtvalg($db, $userid, $utvalgname){
 	}
 }
 
+//
 function removeUserFromArrangement($db, $userid, $arrangementname){
 
 	$stmt = $db->prepare("DELETE FROM user_arrangement WHERE users_id=:userid AND arrangement_id=(SELECT id FROM arrangement WHERE name = :name)");
@@ -345,7 +346,7 @@ function getUtvalgList($db){
 
 //
 function getArrangementList($db){
-	$stmt = $db->prepare("SELECT * FROM arrangement");
+	$stmt = $db->prepare("SELECT * FROM arrangement ORDER BY startdate ASC");
 	try {
 		$stmt->execute();
 	}
@@ -356,6 +357,40 @@ function getArrangementList($db){
 	$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 	return $list;
+}
+
+//
+function getArrangementLongDescription($db, $arrangementname){
+	$stmt = $db->prepare("SELECT description FROM arrangement WHERE id = (SELECT id FROM arrangement WHERE name = :name)");
+	$stmt->bindParam(':name', $arrangementname);
+
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+
+	}
+
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	echo $result['description'];
+}
+
+//
+function getArrangementStartdate($db, $arrangementname){
+	$stmt = $db->prepare("SELECT startdate FROM arrangement WHERE id = (SELECT id FROM arrangement WHERE name = :name)");
+	$stmt->bindParam(':name', $arrangementname);
+
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+
+	}
+
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	echo $result['startdate'];
 }
 
 //takes a utvalgname, and returns the long description of that utvalg
@@ -562,12 +597,13 @@ function drawAllArrangementThumbnail($db, $class){
 
 	foreach ($list as $item) {
 		$name = $item['name'];
+		$startdate = $item['startdate'];
 		$descr = $item['shortdescription'];
 		echo "
 			<a href='arrangement.php?arrangement=$name'>
 				<div class='arrBoks'>
 				    <h1> $name </h1>
-				    <h3>Dato DD MM YY</h3>
+				    <h3>Startdato: </br>$startdate</h3>
 				    <p>$descr</p>
 				</div>
 			</a>
@@ -689,6 +725,7 @@ function drawLogoutBtn($db){
 	}
 }
 
+//
 function drawMenu($db){
 	if (isset($_SESSION['id'])){
 		echo '<li><a href="home.php?selection=mineutvalg">Mine utvalg</a></li>';
