@@ -40,7 +40,7 @@ function login($db, $username, $password){
 
 	$userinfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
-	if (trim((string)mcrypt_decrypt(MCRYPT_RIJNDAEL_128, 'encrKey12', $userinfo['password'], MCRYPT_MODE_CBC)) === (string)$password){
+	if (trim((string)@mcrypt_decrypt(MCRYPT_RIJNDAEL_128, 'encrKey12', $userinfo['password'], MCRYPT_MODE_CBC)) === (string)$password){
 		$_SESSION['id'] = $userinfo['id'];
 		$_SESSION['access'] = $userinfo['access'];
 		if ($_SERVER['PHP_SELF'] == '/~ingmag13/registrer.php'){
@@ -68,7 +68,7 @@ function logoutUser($redirect){
 function addUser($db, $newusername, $newpassword, $newname, $newsurname, $newemail, $newstudentnr){
 
 	//encrypt
-	$encrPassword = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, 'encrKey12', $newpassword, MCRYPT_MODE_CBC);
+	$encrPassword = @mcrypt_encrypt(MCRYPT_RIJNDAEL_128, 'encrKey12', $newpassword, MCRYPT_MODE_CBC);
 
 	$stmt = $db->prepare("INSERT INTO users(username, password, name, surname, epost, studentnr) VALUES(:getnewuser, :getnewpassword, :getnewname, :getnewsurname, :getnewemail, :getnewstudentnr)");
 	$stmt->bindParam(':getnewuser', $newusername);
