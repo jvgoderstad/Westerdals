@@ -1,6 +1,7 @@
 body {
 	margin: 0;
-	background-color: #F1F1F1;
+	background-image:url('bg.gif');
+	background-repeat: repeat;
 	font:100% normal Arial, Helvetica, sans-serif;
 }
 
