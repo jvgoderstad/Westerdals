@@ -15,6 +15,7 @@ if (isset($_GET['meldinn'])){
 } else if (isset($_GET['meldut'])){
 	removeUserFromUtvalg($db, $userid, $utvalgid);
 } else if (isset($_GET['slettutvalg'])){
+	removeAllUsersFromUtvalg($db, $utvalgid);
 	removeUtvalg($db, $utvalgid);
 }
 

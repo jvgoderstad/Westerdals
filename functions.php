@@ -162,6 +162,21 @@ function removeUserFromUtvalg($db, $userid, $utvalgname){
 	}
 }
 
+function removeAllUsersFromUtvalg($db, $utvalgname){
+
+	$stmt = $db->prepare("DELETE FROM user_utvalg WHERE  utvalg_id=(SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
+	$stmt->bindParam(':name', $utvalgname);
+
+	try{
+		@$stmt->execute();
+		return true;
+	}
+	catch(PDOException $e){
+		return false;
+	}
+}
+
+//
 function removeUtvalg($db, $utvalgname){
 
 	$stmt = $db->prepare("DELETE FROM utvalg WHERE id = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
