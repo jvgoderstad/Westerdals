@@ -574,7 +574,7 @@ function drawHeader($db){
 </head>
 
 <body>
-<div id="loginmenu">';drawLogoutBtn($db); echo'<div>
+
 <div id="layout">
     <!-- Menu toggle -->
     <a href="#menu" id="menuLink" class="menu-link">
@@ -586,8 +586,8 @@ function drawHeader($db){
         	<img class ="header-logo" src="westerdal.png" alt="Westerdals Logo">
             <a class="pure-menu-heading" href="home.php">Westerdals</a>
             <ul>
-                <li><a href="home.php">Alle utvalg</a></li>
-                <li><a href="home.php?selection=aktiviteter">Aktiviteter</a></li>';
+           		<li><a href="home.php?selection=aktiviteter">Aktiviteter</a></li>
+                <li><a href="home.php">Alle Utvalg</a></li>';
                 drawMenu($db);
                 echo '
             </ul>
