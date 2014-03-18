@@ -569,12 +569,11 @@ function drawHeader($db){
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Westerdals</title>
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
-        <link rel="stylesheet" href="css/layouts/side-menu.css">
+		<link rel="stylesheet" href="css/pure.css">
+        <link rel="stylesheet" href="css/side-menu.css">
 </head>
 
 <body>
-<script src="js/ui.js"></script>
 <div id="layout">
     <!-- Menu toggle -->
     <a href="#menu" id="menuLink" class="menu-link">
@@ -594,7 +593,7 @@ function drawHeader($db){
         </div>
     </div>
 </div>
-
+<script src="js/ui.js"></script>
 <div id="loginmenu">';drawLogoutBtn($db); echo'<div>
 </body>';
 }
@@ -615,8 +614,7 @@ function drawLogoutBtn($db){
         	<input id="password" name="loginpassord" type="password" placeholder="Passord">
         	<button type="submit" class="pure-button pure-button-primary">Logg inn</button>
         	<a href="registrer.php" class="pure-button pure-button-primary">Registrer</a>
-		</form>
-		';
+		</form>';
 	}
 }
 
