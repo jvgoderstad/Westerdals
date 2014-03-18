@@ -580,7 +580,7 @@ function drawHeader($db){
                 <li><a href="home.php">Alle utvalg</a></li>';
                 drawMenu($db);
                 echo '
-                <li><a href="home.php?selection=mineutvalg">Aktiviteter</a></li>
+                <li><a href="home.php?selection=aktiviteter">Aktiviteter</a></li>
             </ul>
         </div>
     </div>
