@@ -14,6 +14,8 @@ if (isset($_GET['meldinn'])){
 	addUserToUtvalg($db, $userid, $utvalgid);
 } else if (isset($_GET['meldut'])){
 	removeUserFromUtvalg($db, $userid, $utvalgid);
+} else if (isset($_GET['slettutvalg'])){
+	removeUtvalg($db, $utvalgid);
 }
 
 
@@ -49,6 +51,18 @@ if (isset($_GET['utvalg'])){
 			<form action="; echo"rediger_utvalg.php"; echo">
 				<input type='hidden' name='utvalg' value=$utvalg />
 				<input type='submit' class='button' value='Rediger'/>
+			</form>
+		";
+		echo "
+			<form action="; echo""; echo">
+				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='submit' class='button' value='Opprett Arrangement'/>
+			</form>
+		";
+		echo "
+			<form action="; echo"utvalg.php"; echo" method='GET'>
+				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='submit' class='button' value='Slett Utvalget' name='slettutvalg'/>
 			</form>
 		";
 	}

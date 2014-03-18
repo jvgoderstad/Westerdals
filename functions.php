@@ -162,6 +162,22 @@ function removeUserFromUtvalg($db, $userid, $utvalgname){
 	}
 }
 
+function removeUtvalg($db, $utvalgname){
+
+	$stmt = $db->prepare("DELETE FROM utvalg WHERE id = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
+	$stmt->bindParam(':name', $utvalgname);
+
+	try{
+		$stmt->execute();
+		header('Location: home.php');
+		return true;
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+		return false;
+	}
+}
+
 //Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr). Eks: Array['0']['username']
 function getUserList($db){
 	$stmt = $db->prepare("SELECT username,name,surname,epost,studentnr FROM users");
