@@ -4,15 +4,6 @@ require 'functions.php';
 //REQUIREMENTS FOR ALL PAGES
 
 drawHeader($db);
-
-echo'<div id="layout">
-    <div id="main">
-        <div class="header">
-            <h1>Utvalg</h1>
-            <h2>Alle utvalgene på Westerdal</h2>
-        </div>
-
-        <div class="content">';
 if (isset($_GET['selection'])){
     if ($_GET['selection'] == 'mineutvalg'){
         echo "<br/>";
@@ -32,8 +23,4 @@ if (isset($_GET['selection'])){
         drawAllUtvalgThumbnail($db, 'box');
     echo '</section>';
 }
-			echo '
-        </div>
-    </div>
-</div>';
 ?>
