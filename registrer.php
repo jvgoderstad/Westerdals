@@ -3,15 +3,21 @@ require 'functions.php';
 echo '<link rel="stylesheet" type="text/css" href="styles.css">';
 echo '<script type="text/javascript" language="JavaScript">
 		function checkEmail(theForm) {
+			var answer=true;
 			if (theForm.email_1.value != theForm.email_2.value) {
 				document.getElementById("emailForm").style.background = "red";
-				return false;
+				answer = false;
+			} else {
+				document.getElementById("emailForm").style.background = "";
 			}
+
 			if (theForm.passord_1.value != theForm.passord_2.value) {
 				document.getElementById("passordForm").style.background = "red";
-				return false;
+				answer = false;
+			} else {
+				document.getElementById("passordForm").style.background = "";
 			}
-			return true;
+			return answer;
 		}
 	</script>';
 drawHeader($db);
