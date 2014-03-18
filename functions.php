@@ -557,6 +557,14 @@ function drawAllUtvalgOnUserid($db, $class, $userid){
 //Draws the HTML header
 function drawHeader($db){
 	echo '
+	<div id="layout">
+    <div id="main">
+        <div class="header">
+            <h1>Utvalg</h1>
+            <h2>Alle utvalgene på Westerdal</h2>
+        </div>
+
+        <div class="content">
 <head>
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
