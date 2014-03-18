@@ -15,7 +15,9 @@ if (isset($_GET['selection'])){
 	}
 	if ($_GET['selection'] == 'aktiviteter'){
 		echo "<br/>";
-		echo "Liste over aktiviteter kommer senere!";
+		echo '<section id="boxContainer">';
+			drawAllArrangementThumbnail($db, 'box');
+		echo '</section>';
 	}
 } else {
 	echo "<br/>";
