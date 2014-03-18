@@ -15,7 +15,7 @@ if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbesk
 }
 
 echo '
-<form method="POST" action="nytt_utvalg.php" class="pure-form pure-form-aligned" onsubmit="return checkEmail(this);">
+<form method="POST" action="nytt_utvalg.php" class="pure-form pure-form-aligned">
 	<fieldset>
 		<div class="pure-control-group">
 			<label for="name">Navn</label>
