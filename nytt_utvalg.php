@@ -3,6 +3,11 @@ require 'functions.php';
 echo '<link rel="stylesheet" type="text/css" href="styles.css">';
 drawHeader($db);
 
+if (getAccess($db, $_SESSION['id']) == 0){
+	header('Location: home.php');
+	die();
+}
+
 if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbeskrivelse']) && isset($_POST['langbeskrivelse'])){
 	if (!empty($_POST['navn']) && !empty($_POST['kortnavn']) && !empty($_POST['kortbeskrivelse']) && !empty($_POST['langbeskrivelse'])){
 		addUtvalg($db, $_POST['kortnavn'], $_POST['navn'], $_POST['langbeskrivelse'], $_POST['kortbeskrivelse']);
