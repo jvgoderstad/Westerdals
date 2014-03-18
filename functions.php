@@ -97,10 +97,29 @@ function addUtvalg($db, $name, $longname, $description, $shortdescription){
 	$stmt->bindParam(':longname', $longname);
 	$stmt->bindParam(':description', $description);
 	$stmt->bindParam(':shortdescription', $shortdescription);
-
+	
 	try{
 		@$stmt->execute();
 		header('Location: home.php');
+		return true;
+	}
+	catch(PDOException $e){
+		return false;
+	}
+}
+
+//
+function addArrangement($db, $name, $shortdescription, $description, $startdate, $enddate){
+	$stmt = $db->prepare("INSERT INTO utvalg(name, shortdescription, description, startdate, enddate) VALUES(:name, :shortdescription, :description, :startdate, :enddate)");
+	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':description', $description);
+	$stmt->bindParam(':shortdescription', $shortdescription);
+	$stmt->bindParam(':startdate', $startdate);
+	$stmt->bindParam(':enddate', $enddate);
+	
+	try{
+		@$stmt->execute();
+		//header('Location: home.php?selection=aktiviteter');
 		return true;
 	}
 	catch(PDOException $e){
@@ -162,6 +181,7 @@ function removeUserFromUtvalg($db, $userid, $utvalgname){
 	}
 }
 
+//
 function removeAllUsersFromUtvalg($db, $utvalgname){
 
 	$stmt = $db->prepare("DELETE FROM user_utvalg WHERE  utvalg_id=(SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
