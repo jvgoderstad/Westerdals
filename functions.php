@@ -605,7 +605,7 @@ function drawHeader($db){
     </a>
     <div id='menu'>
         <div class='pure-menu pure-menu-open'>
-        	<a href='index.php'><img class ='header-logo' src='westerdal.png' alt='Westerdals Logo'></a>
+        	<a href='index.php' style='padding: 0px;'><img class ='header-logo' src='westerdal.png' alt='Westerdals Logo'></a>
             <a class='pure-menu-heading' href='index.php'>Westerdals</a>
             <ul>
            		<li><a href='home.php?selection=aktiviteter'>Arrangementer</a></li>
