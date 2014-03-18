@@ -97,7 +97,7 @@ function addUtvalg($db, $name, $longname, $description, $shortdescription){
 	$stmt->bindParam(':longname', $longname);
 	$stmt->bindParam(':description', $description);
 	$stmt->bindParam(':shortdescription', $shortdescription);
-	
+
 	try{
 		@$stmt->execute();
 		header('Location: home.php');
@@ -112,7 +112,7 @@ function addUtvalg($db, $name, $longname, $description, $shortdescription){
 function addArrangement($db, $utvalgname, $name, $shortdescription, $description, $startdate, $enddate){
 	$startdate = str_replace(' ', 'T', $startdate);
 	$enddate = str_replace(' ', 'T', $enddate);
-	
+
 	$stmt = $db->prepare("INSERT INTO arrangement(utvalg_id, name, shortdescription, description, startdate, enddate) VALUES((SELECT id FROM(SELECT id FROM utvalg WHERE name = :utvalgname) AS x), :name, :shortdescription, :description, :startdate, :enddate)");
 	$stmt->bindParam(':utvalgname', $utvalgname);
 	$stmt->bindParam(':name', $name);
@@ -120,7 +120,7 @@ function addArrangement($db, $utvalgname, $name, $shortdescription, $description
 	$stmt->bindParam(':shortdescription', $shortdescription);
 	$stmt->bindParam(':startdate', $startdate);
 	$stmt->bindParam(':enddate', $enddate);
-	
+
 	try{
 		$stmt->execute();
 		//header('Location: home.php?selection=aktiviteter');
@@ -134,7 +134,7 @@ function addArrangement($db, $utvalgname, $name, $shortdescription, $description
 
 //Registers a user to an utvalg in the connection table. takes: db, userid, utvalgid. (returns true for successful register. else false)
 function addUserToUtvalg($db, $userid, $utvalgname){
-	
+
 	$stmt = $db->prepare("INSERT INTO user_utvalg(utvalg_id, users_id) VALUES((SELECT id FROM utvalg WHERE name = :name), :userid)");
 	$stmt->bindParam(':name', $utvalgname);
 	$stmt->bindParam(':userid', $userid);
@@ -152,7 +152,7 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 //edits the given utvalg in the database. all fields must be changed
 function editUtvalg($db, $name, $newshortname, $longname, $description, $shortdescription){
 	$stmt = $db->prepare("UPDATE `ingmag13`.`utvalg` SET `name` = :newshortname, `longname` = :longname, `description` = :longdescription, `shortdescription` = :shortdescription WHERE `id` = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
-	
+
 	$stmt->bindParam(':name', $name);
 	$stmt->bindParam(':newshortname', $newshortname);
 	$stmt->bindParam(':longname', $longname);
@@ -238,7 +238,7 @@ function isRegisteredInUtvalg($db, $userid, $utvalgid){
 	$stmt = $db->prepare('SELECT * FROM user_utvalg WHERE users_id = :userid AND utvalg_id = (SELECT id FROM utvalg WHERE name = :name)');
 	$stmt->bindParam(':userid', $userid);
 	$stmt->bindParam(':name', $utvalgid);
-	
+
 	try{
 		$stmt->execute();
 	}
@@ -247,13 +247,13 @@ function isRegisteredInUtvalg($db, $userid, $utvalgid){
 	}
 
 	$userinfo = $stmt->fetch(PDO::FETCH_ASSOC);
-	
+
 	if ($userinfo['utvalg_id'] == null){
 		return false;
 	} else {
 		return true;
 	}
-	
+
 }
 
 //Returns the id of the given utvalgname
@@ -268,9 +268,9 @@ function getUtvalgIdOnName($db, $name){
 		echo $e->getMessage();
 		return false;
 	}
-	
+
 	$utvalg = $stmt->fetch(PDO::FETCH_ASSOC);
-	
+
 	return $utvalg['id'];
 }
 
@@ -308,16 +308,16 @@ function getArrangementList($db){
 function getUtvalgLongDescription($db, $utvalgname){
 	$stmt = $db->prepare("SELECT description FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
 	$stmt->bindParam(':name', $utvalgname);
-	
+
 	try {
 		$stmt->execute();
 	}
 	catch(PDOException $e){
-		
+
 	}
-	
+
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
-	
+
 	echo $result['description'];
 }
 
@@ -325,16 +325,16 @@ function getUtvalgLongDescription($db, $utvalgname){
 function getUtvalgShortDescription($db, $utvalgname){
 	$stmt = $db->prepare("SELECT * FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
 	$stmt->bindParam(':name', $utvalgname);
-	
+
 	try {
 		$stmt->execute();
 	}
 	catch(PDOException $e){
-		
+
 	}
-	
+
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
-	
+
 	echo $result['shortdescription'];
 }
 
@@ -342,16 +342,16 @@ function getUtvalgShortDescription($db, $utvalgname){
 function getUtvalgLongName($db, $utvalgname){
 	$stmt = $db->prepare("SELECT * FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
 	$stmt->bindParam(':name', $utvalgname);
-	
+
 	try {
 		$stmt->execute();
 	}
 	catch(PDOException $e){
-		
+
 	}
-	
+
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
-	
+
 	echo $result['longname'];
 }
 
@@ -556,59 +556,63 @@ function drawAllUtvalgOnUserid($db, $class, $userid){
 //Draws the HTML header
 function drawHeader($db){
 	echo '
-		<div class ="header-top">
-			<a href="index.php"><img class ="header-logo" src="westerdal.png" alt="Westerdals Logo"></a>
-		</div>
-		<div class ="header-bot"></div>
-		<div class ="header-menu">
-			<table>
-				<tr>
-					<td>
-						<a href ="home.php?selection=aktiviteter" class="valg">Aktiviteter</a>
-						<a>|<a/>
-						<a href ="home.php" class="valg">Alle Utvalg</a>';
-						drawLogoutBtn($db);
-						echo'
-				</tr>
-			</table>
-		</div>
+<head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Westerdals</title>
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+        <link rel="stylesheet" href="css/layouts/side-menu.css">
+</head>
 
-	';
+<body>
+<div id="loginmenu">';drawLogoutBtn($db); echo'<div>
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+    <span></span>
+    </a>
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+        	<img class ="header-logo" src="westerdal.png" alt="Westerdals Logo">
+            <a class="pure-menu-heading" href="home.php">Westerdals</a>
+            <ul>
+                <li><a href="home.php">Alle utvalg</a></li>';
+                drawMenu($db);
+                echo '
+                <li><a href="#Aktiviteter">Aktiviteter</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="js/ui.js"></script>
+</body>';
 }
 
 //Draws login/logout
 function drawLogoutBtn($db){
-
 	if (isset($_POST['loginbrukernavn']) && isset($_POST['loginpassord'])){
 		login($db, $_POST['loginbrukernavn'], $_POST['loginpassord']);
 	}
 
 	if (isset($_SESSION['id'])){
-		echo '
-			<a>|<a/>
-			<a href ="home.php?selection=mineutvalg" class="valg">Mine Utvalg</a></td><td width="50%" align="right">
-			<a id="brukernavn">';
-				getUserSurnameName($db, $_SESSION['id']);
-				echo'
-			</a>
-		</td>
-		<td>
-			<a>|<a/>
-			<a href ="session.php" class="valg" id="logg_out">Logg ut</a>
-		</td>';
+				// getUserSurnameName($db, $_SESSION['id']);
 	}
 	else {
 		echo '
-			</td>
-			<form method="POST" action="">
-			<td align="right">
-				<input type="text" name="loginbrukernavn" placeholder="Brukernavn" maxlength="45" class="header_input" required>
-				<input type="password" name="loginpassord" placeholder="Passord" maxlength="30" class="header_input" required>
-				<input type="submit" value="Logg inn" id="logg_in">
-				<a>|<a/>
-				<a href ="registrer.php" class="valg">Ny bruker</a>
-			</td>
-		</form>';
+		<form method="POST" action="" class="pure-form pure-form-stacked" id="logg_in">
+        	<input id="text" name="loginbrukernavn" type="text" placeholder="Brukernavn">
+        	<input id="password" name="loginpassord" type="password" placeholder="Passord">
+        	<button type="submit" class="pure-button pure-button-primary">Logg inn</button>
+        	<a href="registrer.php" class="pure-button pure-button-primary">Registrer</a>
+		</form>
+		';
 	}
 }
 
+function drawMenu($db){
+	if (isset($_SESSION['id'])){
+		echo '<li><a href="home.php?selection=mineutvalg">Mine Utvalg</a></li>';
+		echo '<li><a href="session.php">Logg ut</a></li>';
+	}
+}
