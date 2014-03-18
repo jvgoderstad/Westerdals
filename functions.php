@@ -114,7 +114,7 @@ function addArrangement($db, $name, $shortdescription, $description, $startdate,
 	$startdate += ':00';
 	$enddate += ':00';
 	
-	$stmt = $db->prepare("INSERT INTO utvalg(name, shortdescription, description, startdate, enddate) VALUES(:name, :shortdescription, :description, :startdate, :enddate)");
+	$stmt = $db->prepare("INSERT INTO arrangement(name, shortdescription, description, startdate, enddate) VALUES(:name, :shortdescription, :description, :startdate, :enddate)");
 	$stmt->bindParam(':name', $name);
 	$stmt->bindParam(':description', $description);
 	$stmt->bindParam(':shortdescription', $shortdescription);
@@ -122,11 +122,12 @@ function addArrangement($db, $name, $shortdescription, $description, $startdate,
 	$stmt->bindParam(':enddate', $enddate);
 	
 	try{
-		@$stmt->execute();
+		$stmt->execute();
 		//header('Location: home.php?selection=aktiviteter');
 		return true;
 	}
 	catch(PDOException $e){
+		echo $e->getMessage();
 		return false;
 	}
 }
