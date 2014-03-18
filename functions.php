@@ -515,7 +515,7 @@ function drawAllUtvalgOnUserid($db, $class, $userid){
 function drawHeader($db){
 	echo '
 		<div class ="header-top">
-			<a href="home.php"><img class ="header-logo" src="westerdal.png" alt="Westerdals Logo"></a>
+			<a href="index.php"><img class ="header-logo" src="westerdal.png" alt="Westerdals Logo"></a>
 		</div>
 		<div class ="header-bot"></div>
 		<div class ="header-menu">
