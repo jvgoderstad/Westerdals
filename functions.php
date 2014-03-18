@@ -560,8 +560,8 @@ function drawHeader($db){
 	$currentpageinlineplural = 'Alle utvalgene på Westerdals';
 	if (isset($_GET['selection'])){
 		if ($_GET['selection'] == 'aktiviteter'){
-			$currentpage = 'Aktiviteter';
-			$currentpageinlineplural = 'Alle aktivitetene på Westerdals';
+			$currentpage = 'Arrangementer';
+			$currentpageinlineplural = 'Alle arrangementene på Westerdals';
 			
 		}
 		if ($_GET['selection'] == 'mineutvalg'){
@@ -570,6 +570,15 @@ function drawHeader($db){
 			
 		}
 	}
+	if (isset($_GET['utvalg'])){
+			$currentpage = $_GET['utvalg'];
+			$currentpageinlineplural = 'Informasjon om utvalget '.$_GET['utvalg'];
+	}
+	if (isset($_GET['arrangement'])){
+			$currentpage = $_GET['arrangement'];
+			$currentpageinlineplural = 'Informasjon om arrangementet '.$_GET['arrangement'];
+	}
+	
 	echo "
 	<div id='layout'>
     <div id='main'>
