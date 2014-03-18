@@ -289,6 +289,21 @@ function getUtvalgList($db){
 	return $list;
 }
 
+//
+function getArrangementList($db){
+	$stmt = $db->prepare("SELECT * FROM arrangement");
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+
+	}
+
+	$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	return $list;
+}
+
 //takes a utvalgname, and returns the long description of that utvalg
 function getUtvalgLongDescription($db, $utvalgname){
 	$stmt = $db->prepare("SELECT description FROM utvalg WHERE id = (SELECT id FROM utvalg WHERE name = :name)");
@@ -461,6 +476,32 @@ function drawFormRegister($CSSid, $formDescription, $usernameText, $passwordText
 function drawAllUtvalgThumbnail($db, $class){
 
 	$list = getUtvalgList($db);
+
+	$line = "";
+
+	foreach ($list as $item) {
+		$name = $item['name'];
+		$descr = $item['shortdescription'];
+		echo "
+			<a href='utvalg.php?utvalg=$name'>
+			<div class=$class>
+				<!--Tittel-->
+				<h1>$name</h1>
+
+				<!--Description-->
+				<br>
+				<p>
+					$descr
+				</p>
+			</div>
+			</a>
+	";
+	}
+}
+
+function drawAllArrangementThumbnail($db, $class){
+
+	$list = getArrangementList($db);
 
 	$line = "";
 
