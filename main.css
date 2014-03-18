@@ -62,23 +62,23 @@ a {
 	border: 2px solid rgb(130, 130, 130);
 	border-radius:5px;
 	border-top-left-radius:0px;
+	background-color:white;
 }
 
 .arrLegend{
-
-border-top-right-radius:5px;
-border-top-left-radius:5px;
-border-top:2px solid rgb(130, 130, 130);
-border-right:2px solid rgb(130, 130, 130);
-border-left:2px solid rgb(130, 130, 130);
-color:black;
-font-size:25px;
-padding:5px;
-position:relative;
-top:-19px;
-margin-bottom:-25px;
-
-left:-2px;
+	background-color:white;
+	border-top-right-radius:5px;
+	border-top-left-radius:5px;
+	border-top:2px solid rgb(130, 130, 130);
+	border-right:2px solid rgb(130, 130, 130);
+	border-left:2px solid rgb(130, 130, 130);
+	color:black;
+	font-size:25px;
+	padding:5px;
+	position:relative;
+	top:-19px;
+	margin-bottom:-25px;
+	left:-2px;
 }
 
 .arrField p{
