@@ -574,6 +574,7 @@ function drawHeader($db){
 </head>
 
 <body>
+<script src="js/ui.js"></script>
 <div id="layout">
     <!-- Menu toggle -->
     <a href="#menu" id="menuLink" class="menu-link">
@@ -593,8 +594,8 @@ function drawHeader($db){
         </div>
     </div>
 </div>
+
 <div id="loginmenu">';drawLogoutBtn($db); echo'<div>
-<script src="js/ui.js"></script>
 </body>';
 }
 
