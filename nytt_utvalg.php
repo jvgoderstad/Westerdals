@@ -15,29 +15,31 @@ if (isset($_POST['navn']) && isset($_POST['kortnavn']) && isset($_POST['kortbesk
 }
 
 echo '
-	<form method="POST" action="nytt_utvalg.php">
-		<div class="boxReg" id="largeBoxReg">
-			<h1>Registrer nytt utvalg</h1>
-			<label>
-				<span>Navn</span>
-				<input type="text" class="input_text" name="navn" autofocus required="" maxlength="50" title="Mellom 1-50 tegn langt."/>
-			</label>
-			<label>
-				<span>Forkortelse av navn</span>
-				<input type="text" class="input_text" name="kortnavn" maxlength="6" required="" title="Mellom 1-6 tegn langt."/>
-			</label>
-			<label>
-				<span>Kort beskrivelse</span>
-				<input type="text" class="input_text" name="kortbeskrivelse" maxlength="80" required="" title="Mellom 1-80 tegn langt."/>
-			</label>
-			<label>
-				<span>Lang Beskrivelse</span>
-				<textarea rows="15" cols="200" name="langbeskrivelse" required="" maxlength="5000" class="input_text" id="large_input_field" title="Mellom 1-80 tegn langt."></textarea>
-			</label>
-			<label align="center">
-				<input type="submit"  class="button" value="Opprett utvalg">
-			</label>
+<form method="POST" action="nytt_utvalg.php" class="pure-form pure-form-aligned" onsubmit="return checkEmail(this);">
+	<fieldset>
+		<div class="pure-control-group">
+			<label for="name">Navn</label>
+			<input type="text" class="pure-input-1-2" name="navn" autofocus required="" maxlength="50" title="Mellom 1-50 tegn langt."/>
 		</div>
-	</form>
+		<div class="pure-control-group">
+			<label for="name">Forkortelse av navn</label>
+			<input type="text" class="pure-input-1-2" name="kortnavn" maxlength="6" required="" title="Mellom 1-6 tegn langt."/>
+		</div>
+		<div class="pure-control-group">
+			<label for="name">Kort beskrivelse</label>
+			<input type="text" class="pure-input-1-2"  name="kortbeskrivelse" maxlength="80" required="" title="Mellom 1-80 tegn langt."/>
+		</div>
+		<div class="pure-control-group">
+			<label for="name">Lang beskrivelse</label>
+			<textarea rows="15" cols="200" name="langbeskrivelse" required="" maxlength="5000" class="input_text" id="large_input_field" title="Mellom 1-80 tegn langt."></textarea>
+		</div>
+		<div class="pure-control-group">
+			<label></label>
+			<button type="submit" class="pure-button pure-button-primary">Opprett utvalg</button>
+		</div>
+	</fieldset>
+</form>
+
+
 ';
 ?>
