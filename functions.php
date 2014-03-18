@@ -109,12 +109,13 @@ function addUtvalg($db, $name, $longname, $description, $shortdescription){
 }
 
 //
-function addArrangement($db, $name, $shortdescription, $description, $startdate, $enddate){
+function addArrangement($db, $utvalgname, $name, $shortdescription, $description, $startdate, $enddate){
 	
 	$startdate += ':00';
 	$enddate += ':00';
 	
-	$stmt = $db->prepare("INSERT INTO arrangement(name, shortdescription, description, startdate, enddate) VALUES(:name, :shortdescription, :description, :startdate, :enddate)");
+	$stmt = $db->prepare("INSERT INTO arrangement(utvalg_id, name, shortdescription, description, startdate, enddate) VALUES((SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x), :name, :shortdescription, :description, :startdate, :enddate)");
+	$stmt->bindParam(':utvalgname', $utvalgname);
 	$stmt->bindParam(':name', $name);
 	$stmt->bindParam(':description', $description);
 	$stmt->bindParam(':shortdescription', $shortdescription);

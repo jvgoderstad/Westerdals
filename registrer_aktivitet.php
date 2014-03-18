@@ -3,9 +3,9 @@ require 'functions.php';
 echo '<link rel="stylesheet" type="text/css" href="styles.css">';
 drawHeader($db);
 
-if (isset($_POST['navn']) && isset($_POST['startdato']) && isset($_POST['sluttdato']) && isset($_POST['kortbeskrivelse']) && isset($_POST['langbeskrivelse'])){
+if (isset($_POST['navn']) && isset($_POST['startdato']) && isset($_GET['utvalg']) && isset($_POST['sluttdato']) && isset($_POST['kortbeskrivelse']) && isset($_POST['langbeskrivelse'])){
 	if (!empty($_POST['navn']) && !empty($_POST['startdato']) && !empty($_POST['sluttdato']) && !empty($_POST['kortbeskrivelse']) && !empty($_POST['langbeskrivelse'])){
-		addArrangement($db, $_POST['navn'], $_POST['kortbeskrivelse'], $_POST['langbeskrivelse'], $_POST['startdato'], $_POST['sluttdato']);
+		addArrangement($db, $_GET['utvalg'], $_POST['navn'], $_POST['kortbeskrivelse'], $_POST['langbeskrivelse'], $_POST['startdato'], $_POST['sluttdato']);
 	}
 }
 
