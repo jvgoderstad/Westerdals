@@ -1,8 +1,12 @@
+
+
 #boxContainer{
 	height:20%;
-	width:65%;
+	width:75%;
 	margin:auto;
+	text-align:left;
 }
+
 
 a {
 	color:inherit;
