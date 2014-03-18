@@ -58,7 +58,6 @@ a {
 
 .arrField{
 	width: 800px;
-	height:100px;
 	margin: auto;
 	border: 2px solid rgb(130, 130, 130);
 	border-radius:5px;
@@ -67,7 +66,7 @@ a {
 
 .arrLegend{
 
-border-top-right-radius:2em;
+border-top-right-radius:1em;
 border-top-left-radius:5px;
 border-top:2px solid rgb(130, 130, 130);
 border-right:2px solid rgb(130, 130, 130);
@@ -78,32 +77,54 @@ padding:5px;
 position:relative;
 top:-19px;
 margin-bottom:-25px;
+
 left:-2px;
-width:180px;
-padding-right:-2px;
 }
-
-.index.header{
-
-border-top-right-radius:2em;
-border-top-left-radius:5px;
-border-top:2px solid rgb(130, 130, 130);
-border-right:2px solid rgb(130, 130, 130);
-border-left:2px solid rgb(130, 130, 130);
-color:black;
-font-size:25px;
-padding:5px;
-position:relative;
-top:-19px;
-margin-bottom:-25px;
-left:-2px;
-width:300px;
-padding-right:-2px;
-}
-
 
 .arrField p{
 	padding:5px;
 	position:relative;
 }
 
+.arrBoks{
+	width:95%;
+	height:60px;
+	background-color: rgb(255, 255, 255);
+	margin:auto;
+	position:relative;
+	border-radius:5%;
+	border:solid;
+	border-color:rgb(200, 200, 200);
+	border-width:2px;
+	margin: 30px 10px 0px 10px;
+  	font-family:Verdana, Geneva, Tahoma, sans-serif;
+  	display:inline-block;
+  	-webkit-transition: all 0.3s ease-in-out 0s;
+   	-moz-transition: all 0.3s ease-	in-out 0s;
+   	-ms-transition: all 0.3s ease-in-out 0s;
+   	-o-transition: all 0.3s ease-in-out 0s;
+
+}
+
+.arrBoks:hover {
+	border-color:rgb(130, 130, 130);
+}
+
+.arrBoks h1 {
+	text-align: center;
+	left:10px;
+	position:absolute;
+	font-variant:small-caps;
+	color:black;
+	font-size: 34px;
+}
+
+.arrBoks p {
+	top:43px;
+	left:10px;
+	position:absolute;
+	text-align: left;
+	color:rgb(0, 0, 0);
+	padding-right:10px;
+	font-size:14px;
+}
