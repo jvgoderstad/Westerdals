@@ -8,7 +8,10 @@ echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 drawHeader($db);
 
 $utvalgid = $_GET['utvalg'];
-$userid = $_SESSION['id'];
+if (isset($_SESSION['id'])){
+	$userid = $_SESSION['id'];
+}
+
 
 if (isset($_GET['meldinn'])){
 	addUserToUtvalg($db, $userid, $utvalgid);
