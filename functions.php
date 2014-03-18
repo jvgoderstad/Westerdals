@@ -557,16 +557,16 @@ function drawAllUtvalgOnUserid($db, $class, $userid){
 //Draws the HTML header
 function drawHeader($db){
 	$currentpage = 'Utvalg';
-	$currentpageinlineplural = 'utvalgene';
+	$currentpageinlineplural = 'Alle utvalgene på Westerdals';
 	if (isset($_GET['selection'])){
 		if ($_GET['selection'] == 'aktiviteter'){
 			$currentpage = 'Aktiviteter';
-			$currentpageinlineplural = 'aktivitetene';
+			$currentpageinlineplural = 'Alle aktivitetene på Westerdals';
 			
 		}
 		if ($_GET['selection'] == 'mineutvalg'){
 			$currentpage = 'Mine Utvalg';
-			$currentpageinlineplural = 'utvalgene du er medlem av,';
+			$currentpageinlineplural = 'Alle utvalgene du er medlem av på Westerdals';
 			
 		}
 	}
@@ -575,7 +575,7 @@ function drawHeader($db){
     <div id='main'>
         <div class='header'>
             <h1>$currentpage</h1>
-            <h2>Alle $currentpageinlineplural på Westerdals</h2>
+            <h2>$currentpageinlineplural</h2>
         </div>
 
         <div class='content'>
@@ -600,7 +600,7 @@ function drawHeader($db){
             <a class='pure-menu-heading' href='home.php'>Westerdals</a>
             <ul>
            		<li><a href='home.php?selection=aktiviteter'>Arrangementer</a></li>
-                <li><a href='home.php'>Alle Utvalg</a></li>";
+                <li><a href='home.php'>Alle utvalg</a></li>";
                 drawMenu($db);
                 echo "
             </ul>
@@ -634,7 +634,7 @@ function drawLogoutBtn($db){
 
 function drawMenu($db){
 	if (isset($_SESSION['id'])){
-		echo '<li><a href="home.php?selection=mineutvalg">Mine Utvalg</a></li>';
+		echo '<li><a href="home.php?selection=mineutvalg">Mine utvalg</a></li>';
 		echo '<li><a href="session.php">Logg ut</a></li>';
 	}
 }
