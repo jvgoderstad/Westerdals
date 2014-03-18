@@ -23,8 +23,8 @@ if (isset($_GET['meldinn'])){
 if (isset($_GET['utvalg'])){
 	$utvalgsnavn = $_GET['utvalg'];
 	echo "<br/><br/>
-	<fieldset style='width: 800px; margin: auto;'>
-		<legend>$utvalgsnavn</legend><br/>
+	<fieldset class='arrField'>
+		<legend class='arrLegend'>$utvalgsnavn</legend><br/>
 		<pre>"; getUtvalgLongDescription($db, $utvalgsnavn); echo"</pre>
 		<br/>
 	";

@@ -499,6 +499,7 @@ function drawAllUtvalgThumbnail($db, $class){
 	}
 }
 
+//
 function drawAllArrangementThumbnail($db, $class){
 
 	$list = getArrangementList($db);
