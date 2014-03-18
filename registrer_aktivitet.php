@@ -19,11 +19,11 @@ echo '
 			</label>
 			<label>
 				<span>Start dato</span>
-				<input type="datetime" class="input_text" name="startdato" required="" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))\s?(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){1}" title="YYYY-MM-DD HH:MM"/>
+				<input type="datetime" class="input_text" name="startdato" placeholder="YYYY-MM-DD HH:MM" required="" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))\s?(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){1}" title="YYYY-MM-DD HH:MM"/>
 			</label>
 			<label>
 				<span>Slutt dato</span>
-				<input type="datetime" class="input_text" name="sluttdato" required="" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))\s?(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){1}" title="YYYY-MM-DD HH:MM"/>
+				<input type="datetime" class="input_text" name="sluttdato" placeholder="YYYY-MM-DD HH:MM" required="" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))\s?(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){1}" title="YYYY-MM-DD HH:MM"/>
 			</label>
 			<label>
 				<span>Kort beskrivelse</span>
