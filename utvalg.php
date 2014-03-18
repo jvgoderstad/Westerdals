@@ -51,7 +51,7 @@ if (isset($_GET['utvalg'])){
 	}
 	
 	if (isset($_SESSION['id'])){
-		if (getAccess($db, $_SESSION['id']) == 1){
+		if (getAccess($db, $_SESSION['id']) == 1 || getAccess($db, $_SESSION['id']) == 2){
 		echo "
 			<form action="; echo"rediger_utvalg.php"; echo">
 				<input type='hidden' name='utvalg' value=$utvalg />
