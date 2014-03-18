@@ -120,7 +120,7 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 		return true;
 	}
 	catch(PDOException $e){
-		echo "Du er allerede medlem av dette utvalget!";
+		echo "Det skjedde noe galt! Vennligst last inn siden på nytt, og prøv igjen!";
 		return false;
 	}
 }
