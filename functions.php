@@ -108,7 +108,7 @@ function addUtvalg($db, $name, $longname, $description, $shortdescription){
 	}
 }
 
-//
+//Adds an arrangement to the database, under the given utvalg
 function addArrangement($db, $utvalgname, $name, $shortdescription, $description, $startdate, $enddate){
 	$startdate = str_replace(' ', 'T', $startdate);
 	$enddate = str_replace(' ', 'T', $enddate);
@@ -149,7 +149,7 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 	}
 }
 
-//
+//edits the given utvalg in the database. all fields must be changed
 function editUtvalg($db, $name, $newshortname, $longname, $description, $shortdescription){
 	$stmt = $db->prepare("UPDATE `ingmag13`.`utvalg` SET `name` = :newshortname, `longname` = :longname, `description` = :longdescription, `shortdescription` = :shortdescription WHERE `id` = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
 	
@@ -186,7 +186,7 @@ function removeUserFromUtvalg($db, $userid, $utvalgname){
 	}
 }
 
-//
+//removes all users that are registered to an utvalg
 function removeAllUsersFromUtvalg($db, $utvalgname){
 
 	$stmt = $db->prepare("DELETE FROM user_utvalg WHERE  utvalg_id=(SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
@@ -201,7 +201,7 @@ function removeAllUsersFromUtvalg($db, $utvalgname){
 	}
 }
 
-//
+//Removes an utvalg from the database. USE remove all users function BEFORE USING THIS!
 function removeUtvalg($db, $utvalgname){
 
 	$stmt = $db->prepare("DELETE FROM utvalg WHERE id = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
