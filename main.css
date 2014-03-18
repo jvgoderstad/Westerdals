@@ -24,7 +24,7 @@ a {
 	border-color:rgb(200, 200, 200);
 	border-width:2px;
 	margin: 30px 10px 0px 10px;
-  	font-family:Verdana, Geneva, Tahoma, sans-serif;
+  
   	display:inline-block;
   	-webkit-transition: all 0.3s ease-in-out 0s;
    	-moz-transition: all 0.3s ease-	in-out 0s;
@@ -96,7 +96,7 @@ a {
 	border-color:rgb(200, 200, 200);
 	border-width:2px;
 	margin: 30px 10px 0px 10px;
-  	font-family:Verdana, Geneva, Tahoma, sans-serif;
+  	
   	display:inline-block;
   	-webkit-transition: all 0.3s ease-in-out 0s;
    	-moz-transition: all 0.3s ease-	in-out 0s;
@@ -111,18 +111,20 @@ a {
 
 .arrBoks h1 {
 	left:10px;
-	margin-top:0px;
+	margin-top:2px;
 	margin-bottom:0px;
 	position:absolute;
 	font-variant:small-caps;
 	color:black;
 	font-size: 34px;
+	text-decoration:none;
+	font-weight:normal;
 }
 
 .arrBoks p {
 	margin-top:0px;
 	margin-bottom:0px;
-	top:25px;
+	top:20px;
 	left:10px;
 	position:relative;
 	text-align: left;
@@ -134,8 +136,8 @@ a {
 .arrBoks h3{
 	position:absolute;
 	right:20px;
-	top:20px;
+	top:5px;
 	margin-top:0px;
 	margin-bottom:0px;
-
+	font-weight:normal;
 }
