@@ -150,6 +150,23 @@ function addUserToUtvalg($db, $userid, $utvalgname){
 	}
 }
 
+//
+function addUserToArrangement($db, $userid, $arrangementname){
+
+	$stmt = $db->prepare("INSERT INTO user_arrangement(arrangement_id, users_id) VALUES((SELECT id FROM arrangement WHERE name = :name), :userid)");
+	$stmt->bindParam(':name', $arrangementname);
+	$stmt->bindParam(':userid', $userid);
+
+	try{
+		$stmt->execute();
+		return true;
+	}
+	catch(PDOException $e){
+		echo "Det skjedde noe galt! Vennligst last inn siden på nytt, og prøv igjen!";
+		return false;
+	}
+}
+
 //edits the given utvalg in the database. all fields must be changed
 function editUtvalg($db, $name, $newshortname, $longname, $description, $shortdescription){
 	$stmt = $db->prepare("UPDATE `ingmag13`.`utvalg` SET `name` = :newshortname, `longname` = :longname, `description` = :longdescription, `shortdescription` = :shortdescription WHERE `id` = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
@@ -176,6 +193,21 @@ function removeUserFromUtvalg($db, $userid, $utvalgname){
 
 	$stmt = $db->prepare("DELETE FROM user_utvalg WHERE users_id=:userid AND utvalg_id=(SELECT id FROM utvalg WHERE name = :name)");
 	$stmt->bindParam(':name', $utvalgname);
+	$stmt->bindParam(':userid', $userid);
+
+	try{
+		@$stmt->execute();
+		return true;
+	}
+	catch(PDOException $e){
+		return false;
+	}
+}
+
+function removeUserFromArrangement($db, $userid, $arrangementname){
+
+	$stmt = $db->prepare("DELETE FROM user_arrangement WHERE users_id=:userid AND arrangement_id=(SELECT id FROM arrangement WHERE name = :name)");
+	$stmt->bindParam(':name', $arrangementname);
 	$stmt->bindParam(':userid', $userid);
 
 	try{
@@ -254,7 +286,28 @@ function isRegisteredInUtvalg($db, $userid, $utvalgid){
 	} else {
 		return true;
 	}
+}
 
+
+function isAttendingArrangement($db, $userid, $arrangementname){
+	$stmt = $db->prepare('SELECT * FROM user_arrangement WHERE users_id = :userid AND arrangement_id = (SELECT id FROM arrangement WHERE name = :name)');
+	$stmt->bindParam(':userid', $userid);
+	$stmt->bindParam(':name', $arrangementname);
+
+	try{
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+	}
+
+	$userinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	if ($userinfo['arrangement_id'] == null){
+		return false;
+	} else {
+		return true;
+	}
 }
 
 //Returns the id of the given utvalgname
@@ -557,12 +610,12 @@ function drawHeader($db){
 		if ($_GET['selection'] == 'aktiviteter'){
 			$currentpage = 'Arrangementer';
 			$currentpageinlineplural = 'Alle arrangementene på Westerdals';
-
+			
 		}
 		if ($_GET['selection'] == 'mineutvalg'){
 			$currentpage = 'Mine Utvalg';
 			$currentpageinlineplural = 'Alle utvalgene du er medlem av på Westerdals';
-
+			
 		}
 	}
 	if (isset($_GET['utvalg'])){
@@ -573,7 +626,7 @@ function drawHeader($db){
 			$currentpage = $_GET['arrangement'];
 			$currentpageinlineplural = 'Informasjon om arrangementet '.$_GET['arrangement'];
 	}
-
+	
 	echo "
 	<div id='layout'>
     <div id='main'>
@@ -645,6 +698,6 @@ function drawMenu($db){
 		if (getAccess($db, $_SESSION['id']) == 2){
 			echo '<li><a href="">Administrasjon</a></li>';
 		}
-		echo '<li class="menu-item-divided"><a href="session.php">Logg ut</a></li>';
+		echo '<li><a href="session.php">Logg ut</a></li>';
 	}
 }
