@@ -114,7 +114,7 @@ function addArrangement($db, $utvalgname, $name, $shortdescription, $description
 	$startdate += ':00';
 	$enddate += ':00';
 	
-	$stmt = $db->prepare("INSERT INTO arrangement(utvalg_id, name, shortdescription, description, startdate, enddate) VALUES((SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x), :name, :shortdescription, :description, :startdate, :enddate)");
+	$stmt = $db->prepare("INSERT INTO arrangement(utvalg_id, name, shortdescription, description, startdate, enddate) VALUES((SELECT id FROM(SELECT id FROM utvalg WHERE name = :utvalgname) AS x), :name, :shortdescription, :description, :startdate, :enddate)");
 	$stmt->bindParam(':utvalgname', $utvalgname);
 	$stmt->bindParam(':name', $name);
 	$stmt->bindParam(':description', $description);
