@@ -639,6 +639,9 @@ function drawLogoutBtn($db){
 function drawMenu($db){
 	if (isset($_SESSION['id'])){
 		echo '<li><a href="home.php?selection=mineutvalg">Mine utvalg</a></li>';
+		if (getAccess($db, $_SESSION['id']) == 1 || getAccess($db, $_SESSION['id']) == 2){
+			echo '<li><a href="nytt_utvalg.php">Opprett utvalg</a></li>';
+		}
 		echo '<li><a href="session.php">Logg ut</a></li>';
 	}
 }
