@@ -110,6 +110,10 @@ function addUtvalg($db, $name, $longname, $description, $shortdescription){
 
 //
 function addArrangement($db, $name, $shortdescription, $description, $startdate, $enddate){
+	
+	$startdate += ':00';
+	$enddate += ':00';
+	
 	$stmt = $db->prepare("INSERT INTO utvalg(name, shortdescription, description, startdate, enddate) VALUES(:name, :shortdescription, :description, :startdate, :enddate)");
 	$stmt->bindParam(':name', $name);
 	$stmt->bindParam(':description', $description);
