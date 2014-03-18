@@ -13,7 +13,7 @@ echo'<div id="layout">
         </div>
 
         <div class="content">';
-            if (isset($_GET['selection'])){
+if (isset($_GET['selection'])){
     if ($_GET['selection'] == 'mineutvalg'){
         echo "<br/>";
         echo '<section id="boxContainer">';
