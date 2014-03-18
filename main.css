@@ -2,7 +2,7 @@
 
 #boxContainer{
 	height:20%;
-	width:75%;
+	width:100%;
 	margin:auto;
 	text-align:left;
 }
@@ -111,6 +111,8 @@ a {
 
 .arrBoks h1 {
 	left:10px;
+	margin-top:0px;
+	margin-bottom:0px;
 	position:absolute;
 	font-variant:small-caps;
 	color:black;
@@ -118,6 +120,8 @@ a {
 }
 
 .arrBoks p {
+	margin-top:0px;
+	margin-bottom:0px;
 	top:25px;
 	left:10px;
 	position:relative;
@@ -131,5 +135,7 @@ a {
 	position:absolute;
 	right:20px;
 	top:20px;
+	margin-top:0px;
+	margin-bottom:0px;
 
 }
