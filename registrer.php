@@ -21,9 +21,7 @@ if (isset($_POST['fornavn']) && isset($_POST['etternavn']) && isset($_POST['stud
 		addUser($db, $_POST['brukernavn'], $_POST['passord_1'], $_POST['fornavn'], $_POST['etternavn'], $_POST['email_1'], $_POST['studentnummer']);
 
 		echo '
-			<div class="boxReg">
-				<h1>Du har blitt registrert! Fortsett til Alle utvalg!</h1>
-			</div>
+			Du har blitt registrert! Fortsett til Alle utvalg!
 		';
 
 	} else {
