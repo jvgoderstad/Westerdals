@@ -13,7 +13,9 @@ if (isset($_POST['navn']) && isset($_POST['startdato']) && isset($_POST['utvalg'
 		addArrangement($db, $_POST['utvalg'], $_POST['navn'], $_POST['kortbeskrivelse'], $_POST['langbeskrivelse'], $_POST['startdato'], $_POST['sluttdato']);
 	}
 } else {
-	$utvalg = $_GET['utvalg'];
+	if (isset($_GET['utvalg'])){
+		$utvalg = $_GET['utvalg'];
+	}
 }
 
 echo "
