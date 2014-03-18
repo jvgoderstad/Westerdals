@@ -556,46 +556,60 @@ function drawAllUtvalgOnUserid($db, $class, $userid){
 
 //Draws the HTML header
 function drawHeader($db){
-	echo '
-	<div id="layout">
-    <div id="main">
-        <div class="header">
-            <h1>Utvalg</h1>
-            <h2>Alle utvalgene på Westerdal</h2>
+	$currentpage = 'Utvalg';
+	$currentpageinlineplural = 'utvalgene';
+	if (isset($_GET['selection'])){
+		if ($_GET['selection'] == 'aktiviteter'){
+			$currentpage = 'Aktiviteter';
+			$currentpageinlineplural = 'aktivitetene';
+			
+		}
+		if ($_GET['selection'] == 'mineutvalg'){
+			$currentpage = 'Mine Utvalg';
+			$currentpageinlineplural = 'utvalgene du er medlem av,';
+			
+		}
+	}
+	echo "
+	<div id='layout'>
+    <div id='main'>
+        <div class='header'>
+            <h1>$currentpage</h1>
+            <h2>Alle $currentpageinlineplural på Westerdals</h2>
         </div>
 
-        <div class="content">
+        <div class='content'>
 <head>
-    <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		<title>Westerdals</title>
-		<link rel="stylesheet" href="css/pure.css">
-        <link rel="stylesheet" href="css/side-menu.css">
+		<link rel='stylesheet' href='css/pure.css'>
+        <link rel='stylesheet' href='css/side-menu.css'>
 </head>
 
 <body>
-<div id="layout">
+<div id='layout'>
     <!-- Menu toggle -->
-    <a href="#menu" id="menuLink" class="menu-link">
+    <a href='#menu' id='menuLink' class='menu-link'>
         <!-- Hamburger icon -->
     <span></span>
     </a>
-    <div id="menu">
-        <div class="pure-menu pure-menu-open">
-        	<img class ="header-logo" src="westerdal.png" alt="Westerdals Logo">
-            <a class="pure-menu-heading" href="home.php">Westerdals</a>
+    <div id='menu'>
+        <div class='pure-menu pure-menu-open'>
+        	<img class ='header-logo' src='westerdal.png' alt='Westerdals Logo'>
+            <a class='pure-menu-heading' href='home.php'>Westerdals</a>
             <ul>
-           		<li><a href="home.php?selection=aktiviteter">Arrangementer</a></li>
-                <li><a href="home.php">Alle Utvalg</a></li>';
+           		<li><a href='home.php?selection=aktiviteter'>Arrangementer</a></li>
+                <li><a href='home.php'>Alle Utvalg</a></li>";
                 drawMenu($db);
-                echo '
+                echo "
             </ul>
         </div>
     </div>
 </div>
-<script src="js/ui.js"></script>
-<div id="loginmenu">';drawLogoutBtn($db); echo'<div>
-</body>';
+<script src='js/ui.js'></script>
+<div id='loginmenu'>";drawLogoutBtn($db); echo"<div>
+</body>";
 }
 
 //Draws login/logout
