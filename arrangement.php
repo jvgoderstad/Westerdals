@@ -16,7 +16,7 @@ if (isset($_GET['meldinn'])){
 	addUserToArrangement($db, $userid, $arrangementnavn);
 } else if (isset($_GET['meldut'])){
 	removeUserFromArrangement($db, $userid, $arrangementnavn);
-} else if (isset($_GET['slettutvalg'])){
+} else if (isset($_GET['slettarrangement'])){
 	removeAllUsersFromArrangement($db, $arrangementnavn);
 	removeArrangement($db, $arrangementnavn);
 }
