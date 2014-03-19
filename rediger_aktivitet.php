@@ -19,10 +19,10 @@ if (isset($_POST['navn']) && isset($_POST['langbeskrivelse']) && isset($_POST['k
 echo "
 <form method='POST' action='rediger_aktivitet.php' class='pure-form pure-form-aligned'>
 	<fieldset>
-		<input type='hidden' name='arrangement' value='$arrangement' />
+		<input type='hidden' name='arrangement' value='"; getArrangementName($db, $arrangement); echo"' />
 		<div class='pure-control-group'>
 			<label for='name'>Navn</label>
-			<input type='text' class='input_text pure-u-3-4' value='"; echo"$arrangement"; echo"' name='navn' autofocus required=' maxlength='50' title='Mellom 1-50 tegn langt.'/>
+			<input type='text' class='input_text pure-u-3-4' value='"; echo""; getArrangementName($db, $arrangement); echo""; echo"' name='navn' autofocus required=' maxlength='50' title='Mellom 1-50 tegn langt.'/>
 		</div>
 		<div class='pure-control-group'>
 			<label for='name'>Start dato</label>

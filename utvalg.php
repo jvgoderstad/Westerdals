@@ -27,7 +27,7 @@ if (isset($_GET['utvalg'])){
 	$utvalgsnavn = $_GET['utvalg'];
 	echo "<br/><br/>
 	<fieldset class='arrField'>
-		<legend class='arrLegend'>'$utvalgsnavn'</legend><br/>
+		<legend class='arrLegend'>$utvalgsnavn</legend><br/>
 		<pre>"; getUtvalgLongDescription($db, $utvalgsnavn); echo"</pre>
 		<br/>
 	";

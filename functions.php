@@ -401,6 +401,23 @@ function getArrangementLongDescription($db, $arrangementname){
 }
 
 //
+function getArrangementName($db, $arrangementname){
+	$stmt = $db->prepare("SELECT name FROM arrangement WHERE id = (SELECT id FROM arrangement WHERE name = :name)");
+	$stmt->bindParam(':name', $arrangementname);
+
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+
+	}
+
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	echo $result['name'];
+}
+
+//
 function getArrangementShortDescription($db, $arrangementname){
 	$stmt = $db->prepare("SELECT shortdescription FROM arrangement WHERE id = (SELECT id FROM arrangement WHERE name = :name)");
 	$stmt->bindParam(':name', $arrangementname);
@@ -657,8 +674,11 @@ function drawAllArrangementThumbnail($db, $class){
 		$name = $item['name'];
 		$startdate = $item['startdate'];
 		$descr = $item['shortdescription'];
+		
+		$namefix = urlencode($name);
+		
 		echo "
-			<a href='arrangement.php?arrangement=$name'>
+			<a href='arrangement.php?arrangement=$namefix'>
 				<div class='arrBoks'>
 				    <h1> $name </h1>
 				    <h3>Startdato: </br>$startdate</h3>
