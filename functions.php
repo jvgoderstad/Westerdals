@@ -188,6 +188,30 @@ function editUtvalg($db, $name, $newshortname, $longname, $description, $shortde
 	}
 }
 
+//
+function editAktivitet($db, $oldname, $name, $description, $shortdescription, $startdate, $enddate){
+	$stmt = $db->prepare("UPDATE `ingmag13`.`arrangement` SET `name` = :name, `shortdescription` = :shortdescription, `description` = :longdescription, `startdate` = :startdate , `enddate` = :enddate WHERE `id` = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :oldname) AS x)");
+
+	
+	$stmt->bindParam(':oldname', $oldname);
+	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':longdescription', $description);
+	$stmt->bindParam(':shortdescription', $shortdescription);
+	$stmt->bindParam(':startdate', $startdate);
+	$stmt->bindParam(':enddate', $enddate);
+	
+
+	try{
+		$stmt->execute();
+		header('Location: home.php?selection=aktiviteter');
+		return true;
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+		return false;
+	}
+}
+
 //Registers a user to an utvalg in the connection table. takes: db, userid, utvalgid. (returns true for successful register. else false)
 function removeUserFromUtvalg($db, $userid, $utvalgname){
 
@@ -390,7 +414,24 @@ function getArrangementStartdate($db, $arrangementname){
 
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-	echo $result['startdate'];
+	echo substr($result['startdate'], 0, -3);
+}
+
+//
+function getArrangementEnddate($db, $arrangementname){
+	$stmt = $db->prepare("SELECT enddate FROM arrangement WHERE id = (SELECT id FROM arrangement WHERE name = :name)");
+	$stmt->bindParam(':name', $arrangementname);
+
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+
+	}
+
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	echo substr($result['enddate'], 0, -3);
 }
 
 //takes a utvalgname, and returns the long description of that utvalg
