@@ -733,12 +733,12 @@ function drawHeader($db){
 		}
 	}
 	if (isset($_GET['utvalg'])){
-			$currentpage = $_GET['utvalg'];
-			$currentpageinlineplural = 'Informasjon om utvalget '.$_GET['utvalg'];
+			$currentpage = urldecode($_GET['utvalg']);
+			$currentpageinlineplural = 'Informasjon om utvalget '.urldecode($_GET['utvalg']);
 	}
 	if (isset($_GET['arrangement'])){
-			$currentpage = $_GET['arrangement'];
-			$currentpageinlineplural = 'Informasjon om arrangementet '.$_GET['arrangement'];
+			$currentpage = urldecode($_GET['arrangement']);
+			$currentpageinlineplural = 'Informasjon om arrangementet '.urldecode($_GET['arrangement']);
 	}
 
 	echo "
