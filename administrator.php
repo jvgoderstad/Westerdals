@@ -6,19 +6,23 @@ echo '<link rel="stylesheet" type="text/css" href="main.css" />';
 //REQUIREMENTS FOR ALL PAGES-->
 
 drawHeader($db);
+
+if (getAccess($db, $_SESSION['id']) != 2){
+	header('Location: home.php');
+	die();
+}
+
 $userlist = getUserList($db);
 
 if (isset($_POST['valg']) && isset($_POST['selected'])){
 	if (!empty($_POST['valg']) && !empty($_POST['selected'])){
-		
 		if ($_POST['valg'] == 'giadmin'){
-			editAccess($db, $userlist['id'], 1);
+			editAccess($db, $_POST['selected'], 1);
 		} else if ($_POST['valg'] == 'taadmin'){
-			editAccess($db, $userlist['id'], 0);
+			editAccess($db, $_POST['selected'], 0);
 		}
 	}
 }
-
 
 echo"
 
