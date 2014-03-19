@@ -251,10 +251,11 @@ function removeAllUsersFromArrangement($db, $arrangementname){
 	$stmt->bindParam(':name', $arrangementname);
 
 	try{
-		@$stmt->execute();
+		$stmt->execute();
 		return true;
 	}
 	catch(PDOException $e){
+		echo $e->getMessage();
 		return false;
 	}
 }
@@ -294,12 +295,12 @@ function removeUtvalg($db, $utvalgname){
 //
 function removeArrangement($db, $arrangementname){
 
-	$stmt = $db->prepare("DELETE FROM arrangement WHERE id = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
+	$stmt = $db->prepare("DELETE FROM arrangement WHERE id = (SELECT id FROM(SELECT id FROM arrangement WHERE name = :name) AS x)");
 	$stmt->bindParam(':name', $arrangementname);
 
 	try{
 		$stmt->execute();
-		header('Location: home.php?selection=aktiviteter');
+		//header('Location: home.php?selection=aktiviteter');
 		return true;
 	}
 	catch(PDOException $e){
