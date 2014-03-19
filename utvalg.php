@@ -27,7 +27,7 @@ if (isset($_GET['utvalg'])){
 	$utvalgsnavn = $_GET['utvalg'];
 	echo "<br/><br/>
 	<fieldset class='arrField'>
-		<legend class='arrLegend'>$utvalgsnavn</legend><br/>
+		<legend class='arrLegend'>"; getUtvalgLongName($db, $utvalgsnavn); echo"</legend><br/>
 		<pre>"; getUtvalgLongDescription($db, $utvalgsnavn); echo"</pre>
 		<br/>
 	";
@@ -76,12 +76,50 @@ if (isset($_GET['utvalg'])){
 
 	echo "
 
-	</fieldset>
+	</fieldset>";
+	if (isset($_SESSION['id'])){
+		if (getAccess($db, $_SESSION['id']) == 1 || getAccess($db, $_SESSION['id']) == 2){
+			$userlist = getUserListInUtvalg($db, $_GET['utvalg']);
+			echo"
+			<br />
+			<br />
+			<fieldset class='arrField'>
+				<legend class='arrLegend'>Påmelde brukere</legend><br/>
+				";
+				//echo $item['username'].' - '.$item['name'].' - '.$item['surname'].' - '.$item['epost'].' - '.$item['studentnr'].'</br>';
+					echo "<table>";
+					foreach ($userlist as $item) {
+						echo "<tr>";
+							echo "<td>";
+								echo $item['username'];
+							echo "</td>";
+							echo "<td>";
+								echo $item['name'];
+							echo "</td>";
+							echo "<td>";
+								echo $item['surname'];
+							echo "</td>";
+							echo "<td>";
+								echo $item['epost'];
+							echo "</td>";
+							echo "<td>";
+								echo $item['studentnr'];
+							echo "</td>";
+						echo "</tr>";
+					}
+					echo "<table>";
+				echo"
+			</fieldset>";
+		}
+	}
+	
+	
+	echo"
 	<br />
 	<br />
 	<fieldset class='arrField'>
 		<legend class='arrLegend'>Arrangementer</legend><br/>
-		<p>"; drawAllArrangementOnUtvalgName($db, $_GET['utvalg']); echo"</p>
+		"; drawAllArrangementOnUtvalgName($db, $_GET['utvalg']); echo"
 	</fieldset>
 	";
 

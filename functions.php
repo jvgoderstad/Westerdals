@@ -190,7 +190,7 @@ function editUtvalg($db, $name, $newshortname, $longname, $description, $shortde
 
 //
 function editAktivitet($db, $oldname, $name, $description, $shortdescription, $startdate, $enddate){
-	$stmt = $db->prepare("UPDATE `ingmag13`.`arrangement` SET `name` = :name, `shortdescription` = :shortdescription, `description` = :longdescription, `startdate` = :startdate , `enddate` = :enddate WHERE `id` = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :oldname) AS x)");
+	$stmt = $db->prepare("UPDATE `ingmag13`.`arrangement` SET `name` = :name, `shortdescription` = :shortdescription, `description` = :longdescription, `startdate` = :startdate , `enddate` = :enddate WHERE `id` = (SELECT id FROM(SELECT id FROM arrangement WHERE name = :oldname) AS x)");
 
 	
 	$stmt->bindParam(':oldname', $oldname);
@@ -416,7 +416,7 @@ function getArrangementList($db){
 	return $list;
 }
 
-
+//
 function getArrangementListOnUserId($db, $userid){
 	$stmt = $db->prepare("SELECT * FROM(SELECT * FROM arrangement LEFT JOIN user_arrangement ON arrangement.id = user_arrangement.arrangement_id WHERE user_arrangement.users_id = :userid ORDER BY startdate ASC) as temp WHERE startdate>(SELECT now());");
 	$stmt->bindParam(':userid', $userid);
@@ -432,6 +432,7 @@ function getArrangementListOnUserId($db, $userid){
 	return $list;
 }
 
+//
 function getArrangementListOnUtvalgName($db, $utvalgname){
 	$stmt = $db->prepare("SELECT * FROM arrangement WHERE startdate>(SELECT now()) AND utvalg_id = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x) ORDER BY startdate ASC");
 	$stmt->bindParam(':name', $utvalgname);
@@ -600,9 +601,9 @@ function getUtvalgListOnid($db, $userid){
 }
 
 //Returns a 2D Array of the 'users'-table that is registered to of the chosen utvalg. Eks: Array['0']['username']
-function getUserListInUtvalg($db, $utvalgid){
-	$stmt = $db->prepare("SELECT username,name,surname,epost,studentnr FROM users LEFT JOIN user_utvalg ON user_utvalg.users_id=users.id WHERE user_utvalg.utvalg_id = ':utvalgid'");
-	$stmt->bindParam(':utvalgid', $utvalgid);
+function getUserListInUtvalg($db, $utvalgname){
+	$stmt = $db->prepare("SELECT username,name,surname,epost,studentnr FROM users LEFT JOIN user_utvalg ON user_utvalg.users_id=users.id WHERE user_utvalg.utvalg_id = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
+	$stmt->bindParam(':name', $utvalgname);
 	try {
 		$stmt->execute();
 	}
@@ -610,9 +611,9 @@ function getUserListInUtvalg($db, $utvalgid){
 
 	}
 
-	$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$userlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-	return $list;
+	return $userlist;
 }
 
 //Echoes out <li> elements of the provided 2D array. Each line (Array['0']) represents a separate <li> element in the echo
