@@ -857,6 +857,10 @@ function drawHeader($db){
 			$currentpage = urldecode($_GET['arrangement']);
 			$currentpageinlineplural = 'Informasjon om arrangementet '.urldecode($_GET['arrangement']);
 	}
+	if (__FILE__ == '/home/ingmag13/public_html/administrator.php'){
+		$currentpage = 'Administrator';
+		$currentpageinlineplural = 'Velkommen til nettsidens Administratorside!';
+	}
 
 	echo "
 	<div id='layout'>
@@ -928,7 +932,7 @@ function drawMenu($db){
 			echo '<li class="menu-item-divided"><a href="nytt_utvalg.php">Opprett utvalg</a></li>';
 		}
 		if (getAccess($db, $_SESSION['id']) == 2){
-			echo '<li><a href="">Administrasjon</a></li>';
+			echo '<li><a href="administrator.php">Administrasjon</a></li>';
 		}
 		echo '<li class="menu-item-divided"><a href="session.php">Logg ut</a></li>';
 	}

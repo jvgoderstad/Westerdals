@@ -107,7 +107,7 @@ if (isset($_GET['utvalg'])){
 							echo "</td>";
 						echo "</tr>";
 					}
-					echo "<table>";
+					echo "</table>";
 				echo"
 			</fieldset>";
 		}
