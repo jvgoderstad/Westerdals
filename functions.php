@@ -300,7 +300,7 @@ function removeArrangement($db, $arrangementname){
 
 	try{
 		$stmt->execute();
-		//header('Location: home.php?selection=aktiviteter');
+		header('Location: home.php?selection=aktiviteter');
 		return true;
 	}
 	catch(PDOException $e){
