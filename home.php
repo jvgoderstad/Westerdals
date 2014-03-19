@@ -7,12 +7,12 @@ drawHeader($db);
 if (isset($_GET['selection'])){
     if ($_GET['selection'] == 'mineutvalg'){
         echo "<br/>";
-        echo '<section id="boxContainer">';
+        echo '<section id="arrContainer">';
             drawAllUtvalgOnUserid($db, 'box', $_SESSION['id']);
         echo '</section>';
     }
     if ($_GET['selection'] == 'aktiviteter'){
-        echo '<section id="boxContainer">';
+        echo '<section id="arrContainer">';
     	if (isset($_SESSION['id'])){
     		echo "Påmeldte arrangementer:";
             drawAllArrangementOnUserid($db, $_SESSION['id']);
@@ -26,7 +26,7 @@ if (isset($_GET['selection'])){
     }
 } else {
     echo "<br/>";
-    echo '<section id="boxContainer">';
+    echo '<section id="arrContainer">';
         drawAllUtvalgThumbnail($db, 'box');
     echo '</section>';
 }
