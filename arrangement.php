@@ -17,8 +17,8 @@ if (isset($_GET['meldinn'])){
 } else if (isset($_GET['meldut'])){
 	removeUserFromArrangement($db, $userid, $arrangementnavn);
 } else if (isset($_GET['slettutvalg'])){
-	//removeAllUsersFromUtvalg($db, $utvalgid);
-	//removeUtvalg($db, $utvalgid);
+	removeAllUsersFromArrangement($db, $arrangementnavn);
+	removeArrangement($db, $arrangementnavn);
 }
 
 $decodedarrangement = urldecode($_GET['arrangement']);

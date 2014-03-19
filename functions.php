@@ -244,6 +244,21 @@ function removeUserFromArrangement($db, $userid, $arrangementname){
 	}
 }
 
+//
+function removeAllUsersFromArrangement($db, $arrangementname){
+
+	$stmt = $db->prepare("DELETE FROM user_arrangement WHERE arrangement_id=(SELECT id FROM arrangement WHERE name = :name)");
+	$stmt->bindParam(':name', $arrangementname);
+
+	try{
+		@$stmt->execute();
+		return true;
+	}
+	catch(PDOException $e){
+		return false;
+	}
+}
+
 //removes all users that are registered to an utvalg
 function removeAllUsersFromUtvalg($db, $utvalgname){
 
@@ -268,6 +283,23 @@ function removeUtvalg($db, $utvalgname){
 	try{
 		$stmt->execute();
 		header('Location: home.php');
+		return true;
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+		return false;
+	}
+}
+
+//
+function removeArrangement($db, $arrangementname){
+
+	$stmt = $db->prepare("DELETE FROM arrangement WHERE id = (SELECT id FROM(SELECT id FROM utvalg WHERE name = :name) AS x)");
+	$stmt->bindParam(':name', $arrangementname);
+
+	try{
+		$stmt->execute();
+		header('Location: home.php?selection=aktiviteter');
 		return true;
 	}
 	catch(PDOException $e){
