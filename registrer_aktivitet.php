@@ -22,7 +22,7 @@ echo "
 		<input type='hidden' name='utvalg' value='$utvalg' />
 		<div class='pure-control-group'>
 			<label for='name'>Navn</label>
-			<input type='text' class='input_text pure-u-3-4' name='navn' autofocus required='' maxlength='50' title='Mellom 1-50 tegn langt.'/>
+			<input type='text' class='input_text pure-u-3-4' pattern='[A-Za-zØÆÅøæå-_^` ]{1,50}' name='navn' autofocus required='' title='Mellom 1-50 tegn langt.'/>
 		</div>
 		<div class='pure-control-group'>
 			<label for='name'>Start dato</label>

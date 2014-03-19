@@ -23,7 +23,7 @@ echo '
 		</div>
 		<div class="pure-control-group">
 			<label for="name">Forkortelse av navn</label>
-			<input type="text" class="pure-input pure-u-3-4" name="kortnavn" maxlength="6" required="" title="Mellom 1-6 tegn langt."/>
+			<input type="text" class="pure-input pure-u-3-4" pattern="[A-Za-zØÆÅøæå-_^` ]{1,6}" name="kortnavn" maxlength="6" required="" title="Mellom 1-6 tegn langt."/>
 		</div>
 		<div class="pure-control-group">
 			<label for="name">Kort beskrivelse</label>
