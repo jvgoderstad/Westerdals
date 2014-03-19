@@ -12,12 +12,14 @@ if (isset($_GET['selection'])){
         echo '</section>';
     }
     if ($_GET['selection'] == 'aktiviteter'){
-        echo '<section id="boxContainer">';
-            drawAllArrangementOnUserid($db, $class, $_SESSION['id']);
-        echo '</section>';
-    	echo "Mine Utvalg:";
-        echo "<br/>";
-    	echo "Alle Utvalg:";
+    	if (isset($_SESSION['id'])){
+    		echo "Mine Utvalg:";
+       		echo '<section id="boxContainer">';
+            drawAllArrangementOnUserid($db, $_SESSION['id']);
+       		echo '</section>';
+        	echo "<br/>";
+    		echo "Alle Utvalg:";
+    	}
         echo "<br/>";
         echo '<section id="boxContainer">';
             drawAllArrangementThumbnail($db, 'box');

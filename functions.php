@@ -705,8 +705,7 @@ function drawAllArrangementThumbnail($db, $class){
 	}
 }
 
-//
-function drawAllArrangementOnUserid($db, $class, $userid){
+function drawAllArrangementOnUserid($db, $userid){
 
 	$list = getArrangementListOnUserId($db, $userid);
 
@@ -714,19 +713,18 @@ function drawAllArrangementOnUserid($db, $class, $userid){
 
 	foreach ($list as $item) {
 		$name = $item['name'];
+		$startdate = $item['startdate'];
 		$descr = $item['shortdescription'];
+		
+		$namefix = urlencode($name);
+		
 		echo "
-			<a href='utvalg.php?utvalg=$name'>
-			<div class=$class>
-				<!--Tittel-->
-				<h1>$name</h1>
-
-				<!--Description-->
-				<br>
-				<p>
-					$descr
-				</p>
-			</div>
+			<a href='arrangement.php?arrangement=$namefix'>
+				<div class='arrBoks'>
+				    <h1> $name </h1>
+				    <h3>Startdato: </br>$startdate</h3>
+				    <p>$descr</p>
+				</div>
 			</a>
 	";
 	}
