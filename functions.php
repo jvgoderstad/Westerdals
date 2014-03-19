@@ -189,6 +189,23 @@ function editUtvalg($db, $name, $newshortname, $longname, $description, $shortde
 }
 
 //
+function editAccess($db, $userid, $accesslvl){
+	$stmt = $db->prepare("UPDATE users SET access = :accesslvl WHERE id = :id");
+
+	$stmt->bindParam(':id', $userid);
+	$stmt->bindParam(':accesslvl', $accesslvl);
+
+	try{
+		$stmt->execute();
+		return true;
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+		return false;
+	}
+}
+
+//
 function editAktivitet($db, $oldname, $name, $description, $shortdescription, $startdate, $enddate){
 	$stmt = $db->prepare("UPDATE `ingmag13`.`arrangement` SET `name` = :name, `shortdescription` = :shortdescription, `description` = :longdescription, `startdate` = :startdate , `enddate` = :enddate WHERE `id` = (SELECT id FROM(SELECT id FROM arrangement WHERE name = :oldname) AS x)");
 
@@ -249,6 +266,22 @@ function removeAllUsersFromArrangement($db, $arrangementname){
 
 	$stmt = $db->prepare("DELETE FROM user_arrangement WHERE arrangement_id=(SELECT id FROM arrangement WHERE name = :name)");
 	$stmt->bindParam(':name', $arrangementname);
+
+	try{
+		$stmt->execute();
+		return true;
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+		return false;
+	}
+}
+
+//
+function removeAllArrangementFromUtvalg($db, $utvalgname){
+
+	$stmt = $db->prepare("DELETE FROM arrangement WHERE utvalg_id=(SELECT id FROM utvalg WHERE name = :name)");
+	$stmt->bindParam(':name', $utvalgname);
 
 	try{
 		$stmt->execute();

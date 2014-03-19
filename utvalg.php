@@ -18,6 +18,7 @@ if (isset($_GET['meldinn'])){
 } else if (isset($_GET['meldut'])){
 	removeUserFromUtvalg($db, $userid, $utvalgid);
 } else if (isset($_GET['slettutvalg'])){
+	removeAllArrangementFromUtvalg($db, $utvalgid);
 	removeAllUsersFromUtvalg($db, $utvalgid);
 	removeUtvalg($db, $utvalgid);
 }
@@ -87,7 +88,7 @@ if (isset($_GET['utvalg'])){
 				<legend class='arrLegend'>Påmelde brukere</legend><br/>
 				";
 				//echo $item['username'].' - '.$item['name'].' - '.$item['surname'].' - '.$item['epost'].' - '.$item['studentnr'].'</br>';
-					echo "<table>";
+					echo "<table style='width: 100%'>";
 					foreach ($userlist as $item) {
 						echo "<tr>";
 							echo "<td>";
