@@ -81,7 +81,7 @@ if (isset($_GET['utvalg'])){
 	<br />
 	<fieldset class='arrField'>
 		<legend class='arrLegend'>Arrangementer</legend><br/>
-		<p>Her kommer det en liste over arrangementer dette utvalget arrangerer!</p><br/><br/>
+		<p>"; drawAllArrangementOnUtvalgName($db, $_GET['utvalg']); echo"</p>
 	</fieldset>
 	";
 
