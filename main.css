@@ -1,10 +1,15 @@
-
-
-#boxContainer{
-	width:80%;
-	margin:auto;
-	text-align:left;
+div#boxContainer {
+        float:left;
+        width:100%;
+        position:relative;
+        text-align:center;
 }
+
+    #centerFloats {
+    	max-width: 600px;
+        display:inline-block;
+        text-align:left;
+    }
 
 
 a {
@@ -12,30 +17,43 @@ a {
 	text-decoration: none;
 }
 
-.box {
-	width:180px;
-	height:180px;
-	background-color: rgb(255, 255, 255);
-	margin:auto;
-	position:relative;
-	border-radius:5%;
-	border:solid;
-	border-color:rgb(200, 200, 200);
-	border-width:2px;
-	margin: 30px 10px 0px 10px;
-  
-  	display:inline-block;
-  	-webkit-transition: all 0.3s ease-in-out 0s;
-   	-moz-transition: all 0.3s ease-	in-out 0s;
-   	-ms-transition: all 0.3s ease-in-out 0s;
-   	-o-transition: all 0.3s ease-in-out 0s;
+div.boxCon {
+        background-color: #FFF;
+        border-radius:5%;
+        border:2px solid rgb(200, 200, 200);
+        float:left;
+        height:180px;
+        margin:10px;
+        position:relative;
+        width:180px;
+        display:inline-block;
+        /* for the sake of making this examples media queries work better, use border-box */
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.3s ease-in-out 0s;
+   		-moz-transition: all 0.3s ease-	in-out 0s;
+   		-ms-transition: all 0.3s ease-in-out 0s;
+   		-o-transition: all 0.3s ease-in-out 0s;
+    }
+
+
+
+@media (max-width:900px){
+    #centerFloats { width:600px; }
+}
+@media (max-width:660px){
+    #centerFloats { width:400px; }
+}
+@media (max-width:460px){
+    #centerFloats { width:200px; }
 }
 
-.box:hover {
+.boxCon:hover {
 	border-color:rgb(130, 130, 130);
 }
 
-.box h1 {
+.box h1, .boxCon h1 {
 	text-align: center;
 	left:10px;
 	position:absolute;
@@ -44,7 +62,7 @@ a {
 	font-size: 34px;
 }
 
-.box p {
+.box p, .boxCon p {
 	top:43px;
 	left:10px;
 	position:absolute;

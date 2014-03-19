@@ -26,8 +26,8 @@ if (isset($_GET['selection'])){
     }
 } else {
     echo "<br/>";
-    echo '<section id="boxContainer">';
-        drawAllUtvalgThumbnail($db, 'box');
-    echo '</section>';
+    echo '<div id="boxContainer"><span id="centerFloats">';
+        drawAllUtvalgThumbnail($db, 'boxCon');
+    echo '</span></div>';
 }
 ?>
