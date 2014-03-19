@@ -124,7 +124,7 @@ function addArrangement($db, $utvalgname, $name, $shortdescription, $description
 
 	try{
 		$stmt->execute();
-		//header('Location: home.php?selection=aktiviteter');
+		header('Location: home.php?selection=aktiviteter');
 		return true;
 	}
 	catch(PDOException $e){
@@ -371,6 +371,22 @@ function getUtvalgList($db){
 //
 function getArrangementList($db){
 	$stmt = $db->prepare("SELECT * FROM arrangement ORDER BY startdate DESC");
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+
+	}
+
+	$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	return $list;
+}
+
+
+function getArrangementListOnUserId($db, $userid){
+	$stmt = $db->prepare("SELECT * FROM arrangement LEFT JOIN user_arrangement ON arrangement.id = user_arrangement.arrangement_id WHERE user_arrangement.users_id = :userid ORDER BY startdate DESC");
+	$stmt->bindParam(':userid', $userid);
 	try {
 		$stmt->execute();
 	}
@@ -684,6 +700,33 @@ function drawAllArrangementThumbnail($db, $class){
 				    <h3>Startdato: </br>$startdate</h3>
 				    <p>$descr</p>
 				</div>
+			</a>
+	";
+	}
+}
+
+//
+function drawAllArrangementOnUserid($db, $class, $userid){
+
+	$list = getArrangementListOnUserId($db, $userid);
+
+	$line = "";
+
+	foreach ($list as $item) {
+		$name = $item['name'];
+		$descr = $item['shortdescription'];
+		echo "
+			<a href='utvalg.php?utvalg=$name'>
+			<div class=$class>
+				<!--Tittel-->
+				<h1>$name</h1>
+
+				<!--Description-->
+				<br>
+				<p>
+					$descr
+				</p>
+			</div>
 			</a>
 	";
 	}

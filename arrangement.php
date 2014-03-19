@@ -21,7 +21,7 @@ if (isset($_GET['meldinn'])){
 	//removeUtvalg($db, $utvalgid);
 }
 
-$decodedarrangement = $_GET['arrangement'];
+$decodedarrangement = urldecode($_GET['arrangement']);
 
 if (isset($_GET['arrangement'])){
 	$arrangementnavn = $_GET['arrangement'];
@@ -53,13 +53,13 @@ if (isset($_GET['arrangement'])){
 		if (getAccess($db, $_SESSION['id']) == 1 || getAccess($db, $_SESSION['id']) == 2){
 		echo "
 			<form class='form-button' action="; echo"rediger_aktivitet.php"; echo">
-				<input type='hidden' name='arrangement' value='"; echo urlencode($decodedarrangement); echo"' />
+				<input type='hidden' name='arrangement' value='"; echo $decodedarrangement; echo"' />
 				<input type='submit' class='pure-button pure-button-primary' value='Rediger'/>
 			</form>
 		";
 		echo "
 			<form class='form-button' action="; echo"arrangement.php"; echo" method='GET'>
-				<input type='hidden' name='arrangement' value='"; echo urlencode($decodedarrangement); echo"' />
+				<input type='hidden' name='arrangement' value='"; echo $decodedarrangement; echo"' />
 				<input type='submit' class='pure-button pure-button-primary' value='Slett Arrangementet' name='slettarrangement'/>
 			</form>
 		";
