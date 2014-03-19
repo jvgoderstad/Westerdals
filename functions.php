@@ -311,7 +311,7 @@ function removeArrangement($db, $arrangementname){
 
 //Returns a 2D Array of the 'users'-table Fields(username, name, surname, epost, studentnr). Eks: Array['0']['username']
 function getUserList($db){
-	$stmt = $db->prepare("SELECT username,name,surname,epost,studentnr FROM users");
+	$stmt = $db->prepare("SELECT * FROM users");
 	try {
 		$stmt->execute();
 	}
@@ -643,6 +643,21 @@ function getUserName($db, $id){
 	return $userinfo['username'];
 }
 
+//
+function getUserIdOnName($db, $name){
+	$stmt = $db->prepare('SELECT id FROM users WHERE name=:name');
+	$stmt->bindParam(':name', $name);
+	try{
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+	}
+
+	$userinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+	return $userinfo['id'];
+}
+
 //Gets the surname, name and returns it as a string, based on the provided userdb and id
 function getUserSurnameName($db, $id){
 	$stmt = $db->prepare('SELECT * FROM users WHERE id=:id');
@@ -857,7 +872,7 @@ function drawHeader($db){
 			$currentpage = urldecode($_GET['arrangement']);
 			$currentpageinlineplural = 'Informasjon om arrangementet '.urldecode($_GET['arrangement']);
 	}
-	if (__FILE__ == '/home/ingmag13/public_html/administrator.php'){
+	if ($_SERVER["REQUEST_URI"] == '/~ingmag13/administrator.php'){
 		$currentpage = 'Administrator';
 		$currentpageinlineplural = 'Velkommen til nettsidens Administratorside!';
 	}
