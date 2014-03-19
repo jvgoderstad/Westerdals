@@ -34,11 +34,11 @@ echo "
 		</div>
 		<div class='pure-control-group'>
 			<label for='name'>Kort beskrivelse</label>
-			<input type='text' class='input_text pure-u-3-4' value='' name='kortbeskrivelse' maxlength='80' required=' title='Mellom 1-80 tegn langt.'/>
+			<input type='text' class='input_text pure-u-3-4' value='"; getArrangementShortDescription($db, $arrangement); echo"' name='kortbeskrivelse' maxlength='80' required=' title='Mellom 1-80 tegn langt.'/>
 		</div>
 		<div class='pure-control-group'>
 			<label for='name'>Lang beskrivelse</label>
-			<textarea rows='15' cols='200' name='langbeskrivelse' required=' maxlength='5000' class='input_text pure-u-3-4' title='Mellom 1-80 tegn langt.'></textarea>
+			<textarea rows='15' cols='200' name='langbeskrivelse' required=' maxlength='5000' class='input_text pure-u-3-4' title='Mellom 1-80 tegn langt.'>"; getArrangementLongDescription($db, $arrangement); echo"</textarea>
 		</div>
 		<div class='pure-control-group'>
 			<label></label>

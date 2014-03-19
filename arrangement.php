@@ -33,7 +33,7 @@ if (isset($_GET['arrangement'])){
 			$arrangement = $_GET['arrangement'];
 			echo "
 				<form class='form-button' action='arrangement.php' method='GET'>
-					<input type='hidden' name='arrangement' value=$arrangement />
+					<input type='hidden' name='arrangement' value='$arrangement' />
 					<input type='submit' class='pure-button pure-button-primary' value='Meld deg på' name='meldinn' />
 				</form>
 			";
@@ -41,7 +41,7 @@ if (isset($_GET['arrangement'])){
 			$arrangement = $_GET['arrangement'];
 			echo "
 				<form class='form-button' action='arrangement.php' method='GET'>
-					<input type='hidden' name='arrangement' value=$arrangement />
+					<input type='hidden' name='arrangement' value='$arrangement' />
 					<input type='submit' class='pure-button pure-button-primary' value='Meld deg av' name='meldut' />
 				</form>
 			";
@@ -51,13 +51,13 @@ if (isset($_GET['arrangement'])){
 		if (getAccess($db, $_SESSION['id']) == 1 || getAccess($db, $_SESSION['id']) == 2){
 		echo "
 			<form class='form-button' action="; echo"rediger_aktivitet.php"; echo">
-				<input type='hidden' name='arrangement' value=$arrangement />
+				<input type='hidden' name='arrangement' value='$arrangement' />
 				<input type='submit' class='pure-button pure-button-primary' value='Rediger'/>
 			</form>
 		";
 		echo "
 			<form class='form-button' action="; echo"arrangement.php"; echo" method='GET'>
-				<input type='hidden' name='arrangement' value=$arrangement />
+				<input type='hidden' name='arrangement' value='$arrangement' />
 				<input type='submit' class='pure-button pure-button-primary' value='Slett Arrangementet' name='slettarrangement'/>
 			</form>
 		";

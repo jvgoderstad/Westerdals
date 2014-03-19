@@ -27,7 +27,7 @@ if (isset($_GET['utvalg'])){
 	$utvalgsnavn = $_GET['utvalg'];
 	echo "<br/><br/>
 	<fieldset class='arrField'>
-		<legend class='arrLegend'>$utvalgsnavn</legend><br/>
+		<legend class='arrLegend'>'$utvalgsnavn'</legend><br/>
 		<pre>"; getUtvalgLongDescription($db, $utvalgsnavn); echo"</pre>
 		<br/>
 	";
@@ -36,7 +36,7 @@ if (isset($_GET['utvalg'])){
 		$utvalg = $_GET['utvalg'];
 		echo "
 			<form class='form-button' action='utvalg.php' method='GET'>
-				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='hidden' name='utvalg' value='$utvalg' />
 				<input type='submit' class='pure-button pure-button-primary' value='Meld deg inn' name='meldinn' />
 			</form>
 		";
@@ -44,7 +44,7 @@ if (isset($_GET['utvalg'])){
 		$utvalg = $_GET['utvalg'];
 		echo "
 			<form class='form-button' action='utvalg.php' method='GET'>
-				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='hidden' name='utvalg' value='$utvalg' />
 				<input type='submit' class='pure-button pure-button-primary' value='Meld deg ut' name='meldut' />
 			</form>
 		";
@@ -53,20 +53,20 @@ if (isset($_GET['utvalg'])){
 	if (isset($_SESSION['id'])){
 		if (getAccess($db, $_SESSION['id']) == 1 || getAccess($db, $_SESSION['id']) == 2){
 		echo "
-			<form class='form-button' action="; echo"rediger_utvalg.php"; echo">
-				<input type='hidden' name='utvalg' value=$utvalg />
+			<form class='form-button' method='GET' action="; echo"rediger_utvalg.php"; echo">
+				<input type='hidden' name='utvalg' value='$utvalg' />
 				<input type='submit' class='pure-button pure-button-primary' value='Rediger'/>
 			</form>
 		";
 		echo "
 			<form class='form-button' action="; echo"registrer_aktivitet.php"; echo">
-				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='hidden' name='utvalg' value='$utvalg' />
 				<input type='submit' class='pure-button pure-button-primary' value='Opprett Arrangement'/>
 			</form>
 		";
 		echo "
 			<form class='form-button' action="; echo"utvalg.php"; echo" method='GET'>
-				<input type='hidden' name='utvalg' value=$utvalg />
+				<input type='hidden' name='utvalg' value='$utvalg' />
 				<input type='submit' class='pure-button pure-button-primary' value='Slett Utvalget' name='slettutvalg'/>
 			</form>
 		";

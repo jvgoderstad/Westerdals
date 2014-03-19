@@ -370,7 +370,7 @@ function getUtvalgList($db){
 
 //
 function getArrangementList($db){
-	$stmt = $db->prepare("SELECT * FROM arrangement ORDER BY startdate ASC");
+	$stmt = $db->prepare("SELECT * FROM arrangement ORDER BY startdate DESC");
 	try {
 		$stmt->execute();
 	}
@@ -398,6 +398,23 @@ function getArrangementLongDescription($db, $arrangementname){
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 	echo $result['description'];
+}
+
+//
+function getArrangementShortDescription($db, $arrangementname){
+	$stmt = $db->prepare("SELECT shortdescription FROM arrangement WHERE id = (SELECT id FROM arrangement WHERE name = :name)");
+	$stmt->bindParam(':name', $arrangementname);
+
+	try {
+		$stmt->execute();
+	}
+	catch(PDOException $e){
+
+	}
+
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	echo $result['shortdescription'];
 }
 
 //
