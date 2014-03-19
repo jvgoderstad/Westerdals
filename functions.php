@@ -370,7 +370,7 @@ function getUtvalgList($db){
 
 //
 function getArrangementList($db){
-	$stmt = $db->prepare("SELECT * FROM arrangement ORDER BY startdate DESC");
+	$stmt = $db->prepare("SELECT * FROM arrangement ORDER BY startdate ASC");
 	try {
 		$stmt->execute();
 	}
@@ -385,7 +385,7 @@ function getArrangementList($db){
 
 
 function getArrangementListOnUserId($db, $userid){
-	$stmt = $db->prepare("SELECT * FROM arrangement LEFT JOIN user_arrangement ON arrangement.id = user_arrangement.arrangement_id WHERE user_arrangement.users_id = :userid ORDER BY startdate DESC");
+	$stmt = $db->prepare("SELECT * FROM arrangement LEFT JOIN user_arrangement ON arrangement.id = user_arrangement.arrangement_id WHERE user_arrangement.users_id = :userid ORDER BY startdate ASC");
 	$stmt->bindParam(':userid', $userid);
 	try {
 		$stmt->execute();
@@ -705,6 +705,7 @@ function drawAllArrangementThumbnail($db, $class){
 	}
 }
 
+//
 function drawAllArrangementOnUserid($db, $userid){
 
 	$list = getArrangementListOnUserId($db, $userid);
