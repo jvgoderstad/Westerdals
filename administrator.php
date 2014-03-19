@@ -20,6 +20,10 @@ if (isset($_POST['valg']) && isset($_POST['selected'])){
 			editAccess($db, $_POST['selected'], 1);
 		} else if ($_POST['valg'] == 'taadmin'){
 			editAccess($db, $_POST['selected'], 0);
+		} else if ($_POST['valg'] == 'slett'){
+			removeUserFromAllArrangement($db, $_POST['selected']);
+			removeUserFromAllUtvalg($db, $_POST['selected']);
+			removeUser($db, $_POST['selected']);
 		}
 	}
 }
@@ -37,9 +41,6 @@ echo"
 					foreach ($userlist as $item) {
 						$userid = $item['id'];
 						echo "<tr>";
-							echo "<td>";
-								echo getAccess($db, $item['id']);
-							echo "</td>";
 							echo "<td>";
 								echo $item['username'];
 							echo "</td>";
@@ -61,7 +62,7 @@ echo"
 									<form action='administrator.php' method='post'>
 										<input type='hidden' name='valg' value='giadmin'>
 										<input type='hidden' name='selected' value='$userid'>
-										<button type='submit' class='pure-button pure-u-3-4 pure-button-primary'>Gi Admin</button>
+										<button type='submit' class='pure-button pure-u-3-4 pure-button-primary'>User</button>
 									</form>
 								";
 							} else if (getAccess($db, $userid) == 1){
@@ -69,17 +70,33 @@ echo"
 									<form action='administrator.php' method='post'>
 										<input type='hidden' name='valg' value='taadmin'>
 										<input type='hidden' name='selected' value='$userid'>
-										<button type='submit' class='pure-button pure-u-3-4 pure-button-primary'>Fjern Admin</button>
+										<button type='submit' class='pure-button pure-u-3-4 pure-button-primary'>Admin</button>
 									</form>
 								";
 							} else if (getAccess($db, $userid) == 2){
 								echo "
 									<form action='administrator.php' method='post'>
-										<button disabled type='submit' class='pure-button pure-u-3-4 pure-button-primary'>Superuser</button>
+										<button disabled type='submit' class='pure-button pure-u-3-4 pure-button-primary'>Låst</button>
 									</form>
 								";
 							}
-								
+							echo "</td>";
+							echo "<td>";
+								if (getAccess($db, $userid) == 0 || getAccess($db, $userid) == 1){
+								echo "
+									<form action='administrator.php' method='post'>
+										<input type='hidden' name='valg' value='slett'>
+										<input type='hidden' name='selected' value='$userid'>
+										<button type='submit' class='pure-button pure-u-3-4 pure-button-primary'>Slett</button>
+									</form>
+									";
+								} else if (getAccess($db, $userid) == 2){
+								echo "
+									<form action='administrator.php' method='post'>
+										<button type='submit' disabled class='pure-button pure-u-3-4 pure-button-primary'>Låst</button>
+									</form>
+									";
+								}
 							echo "</td>";
 						echo "</tr>";
 					}

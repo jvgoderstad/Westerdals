@@ -246,10 +246,40 @@ function removeUserFromUtvalg($db, $userid, $utvalgname){
 }
 
 //
+function removeUserFromAllUtvalg($db, $userid){
+
+	$stmt = $db->prepare("DELETE FROM user_utvalg WHERE users_id=:userid");
+	$stmt->bindParam(':userid', $userid);
+
+	try{
+		@$stmt->execute();
+		return true;
+	}
+	catch(PDOException $e){
+		return false;
+	}
+}
+
+//
 function removeUserFromArrangement($db, $userid, $arrangementname){
 
 	$stmt = $db->prepare("DELETE FROM user_arrangement WHERE users_id=:userid AND arrangement_id=(SELECT id FROM arrangement WHERE name = :name)");
 	$stmt->bindParam(':name', $arrangementname);
+	$stmt->bindParam(':userid', $userid);
+
+	try{
+		@$stmt->execute();
+		return true;
+	}
+	catch(PDOException $e){
+		return false;
+	}
+}
+
+//
+function removeUserFromAllArrangement($db, $userid){
+
+	$stmt = $db->prepare("DELETE FROM user_arrangement WHERE users_id=:userid");
 	$stmt->bindParam(':userid', $userid);
 
 	try{
@@ -317,6 +347,22 @@ function removeUtvalg($db, $utvalgname){
 	try{
 		$stmt->execute();
 		header('Location: home.php');
+		return true;
+	}
+	catch(PDOException $e){
+		echo $e->getMessage();
+		return false;
+	}
+}
+
+//
+function removeUser($db, $userid){
+
+	$stmt = $db->prepare("DELETE FROM users WHERE id = :userid");
+	$stmt->bindParam(':userid', $userid);
+
+	try{
+		$stmt->execute();
 		return true;
 	}
 	catch(PDOException $e){
