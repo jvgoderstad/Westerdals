@@ -85,7 +85,7 @@ if (isset($_GET['utvalg'])){
 			<br />
 			<br />
 			<fieldset class='arrField'>
-				<legend class='arrLegend'>Påmelde brukere</legend><br/>
+				<legend class='arrLegend'>Påmeldte brukere</legend><br/>
 				";
 				//echo $item['username'].' - '.$item['name'].' - '.$item['surname'].' - '.$item['epost'].' - '.$item['studentnr'].'</br>';
 					echo "<table style='width: 100%'>";
