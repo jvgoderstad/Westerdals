@@ -831,7 +831,9 @@ function drawAllArrangementThumbnail($db, $class){
 
 	foreach ($list as $item) {
 		$name = $item['name'];
-		$startdate = $item['startdate'];
+		$time = substr($item['startdate'], 11, -3);
+		$month = substr($item['startdate'], 5, -12);
+		$date = substr($item['startdate'], 8, -9);
 		$descr = $item['shortdescription'];
 		
 		$namefix = urlencode($name);
@@ -840,7 +842,7 @@ function drawAllArrangementThumbnail($db, $class){
 			<a href='arrangement.php?arrangement=$namefix'>
 				<div class='arrBoks'>
 				    <h1> $name </h1>
-				    <h3>Startdato: </br>$startdate</h3>
+				    <h3>$date/$month Kl: $time</h3>
 				    <p>$descr</p>
 				</div>
 			</a>
@@ -857,7 +859,9 @@ function drawAllArrangementOnUserid($db, $userid){
 
 	foreach ($list as $item) {
 		$name = $item['name'];
-		$startdate = $item['startdate'];
+		$time = substr($item['startdate'], 11, -3);
+		$month = substr($item['startdate'], 5, -12);
+		$date = substr($item['startdate'], 8, -9);
 		$descr = $item['shortdescription'];
 		
 		$namefix = urlencode($name);
@@ -866,7 +870,7 @@ function drawAllArrangementOnUserid($db, $userid){
 			<a href='arrangement.php?arrangement=$namefix'>
 				<div class='arrBoks'>
 				    <h1> $name </h1>
-				    <h3>Startdato: </br>$startdate</h3>
+				    <h3>$date/$month Kl: $time</h3>
 				    <p>$descr</p>
 				</div>
 			</a>
@@ -883,7 +887,9 @@ function drawAllArrangementOnUtvalgName($db, $utvalgname){
 
 	foreach ($list as $item) {
 		$name = $item['name'];
-		$startdate = $item['startdate'];
+		$time = substr($item['startdate'], 11, -3);
+		$month = substr($item['startdate'], 5, -12);
+		$date = substr($item['startdate'], 8, -9);
 		$descr = $item['shortdescription'];
 		
 		$namefix = urlencode($name);
@@ -892,7 +898,7 @@ function drawAllArrangementOnUtvalgName($db, $utvalgname){
 			<a href='arrangement.php?arrangement=$namefix'>
 				<div class='arrBoks'>
 				    <h1> $name </h1>
-				    <h3>Startdato: </br>$startdate</h3>
+				    <h3>$date/$month Kl: $time</h3>
 				    <p>$descr</p>
 				</div>
 			</a>
